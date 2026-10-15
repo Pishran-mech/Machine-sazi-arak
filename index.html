@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام اردوی بازدید از ماشین‌سازی اراک | پایگاه پیشران</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        camp: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f4f9f7;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.07) 0px, transparent 45%),
+                radial-gradient(at 100% 25%, rgba(20, 184, 166, 0.07) 0px, transparent 45%),
+                radial-gradient(at 50% 100%, rgba(5, 150, 105, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .hero-pattern {
+            background: linear-gradient(135deg, #042f2e 0%, #064e3b 45%, #0f766e 100%);
+            position: relative;
+        }
+
+        .hero-grid-overlay {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.11);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-hover {
+            transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 35px -12px rgba(5, 150, 105, 0.14);
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.03); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(25deg);
+            transition: all 0.65s ease;
+        }
+        .btn-shine:hover::after {
+            left: 130%;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableTicketArea, #printableTicketArea * {
+                visibility: visible;
+            }
+            #printableTicketArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none !important;
+                border: 2px solid #059669 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-5 left-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none no-print"></div>
+
+    <header class="bg-white/85 backdrop-blur-xl border-b border-emerald-100 sticky top-0 z-40 no-print shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between py-3.5 gap-3">
+                <!-- Brand / Organizer Logo -->
+                <div class="flex items-center justify-between w-full md:w-auto gap-3">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-700 flex items-center justify-center text-white shadow-lg shadow-emerald-600/25 shrink-0 ring-4 ring-emerald-50">
+                            <i class="fa-solid fa-industry text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h1 class="font-black text-base sm:text-lg text-slate-900 leading-tight">اردوی بازدید از ماشین‌سازی اراک</h1>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">پایگاه پیشران</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex items-center bg-slate-100/90 p-1.5 rounded-2xl w-full md:w-auto justify-center border border-slate-200/80 shadow-inner">
+                    <button onclick="switchTab('register')" id="tabBtn-register" class="tab-btn flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-gradient-to-l from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>ثبت‌نام اولیه</span>
+                    </button>
+                    <button onclick="switchTab('track')" id="tabBtn-track" class="tab-btn flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all relative">
+                        <i class="fa-solid fa-receipt"></i>
+                        <span>نتیجه قرعه‌کشی و ارسال رسید</span>
+                    </button>
+                    <button onclick="switchTab('admin')" id="tabBtn-admin" class="tab-btn flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                        <i id="adminLockIcon" class="fa-solid fa-lock text-emerald-600"></i>
+                        <span>پنل برگزارکننده</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-pattern text-white relative overflow-hidden no-print">
+        <div class="hero-grid-overlay absolute inset-0 pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-emerald-400/15 blur-3xl pointer-events-none animate-float"></div>
+        <div class="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-teal-300/15 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Right Column: Camp Title & Details (7 Cols) -->
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/25 text-emerald-100 text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
+                            <span>ویژه دانشجویان دانشکده مهندسی مکانیک دانشگاه شهید بهشتی</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 bg-teal-400/20 border border-teal-300/30 text-teal-100 text-xs font-bold px-3.5 py-1.5 rounded-full">
+                            <i class="fa-solid fa-bus"></i>
+                            <span>رفت و برگشت با اتوبوس</span>
+                        </span>
+                    </div>
+
+                    <h2 id="heroTitle" class="text-2xl sm:text-4xl lg:text-[40px] font-black tracking-tight text-white leading-snug">
+                        اردوی علمی-صنعتی بازدید از ابرکارخانه <span class="text-transparent bg-clip-text bg-gradient-to-l from-emerald-200 to-teal-200">ماشین‌سازی اراک</span>
+                    </h2>
+
+                    <p id="heroDescription" class="text-emerald-50/90 text-sm sm:text-base leading-relaxed">
+                        فرصتی کم‌نظیر جهت آشنایی از نزدیک با خطوط تولید بویلرهای نیروگاهی، مخازن تحت فشار پتروشیمی، کوره‌های متالورژی، سالن‌های آهنگری، ریخته‌گری و ماشین‌کاری سنگین کشور به همراه <strong>صبحانه، ناهار و میان‌وعده</strong> به میزبانی <strong>پایگاه پیشران</strong>.
+                    </p>
+
+                    <!-- Route & Schedule Quick Box -->
+                    <div class="glass-panel rounded-3xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400/30 to-teal-500/30 border border-white/20 text-emerald-200 flex items-center justify-center shrink-0 text-xl">
+                                <i class="fa-solid fa-route"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-black text-white">مسیر و زمان‌بندی حرکت اردو:</h3>
+                                <p class="text-xs text-emerald-100 mt-1 leading-relaxed">
+                                    حرکت ساعت <strong>۴ الی ۵ صبح</strong> از <strong>دانشکدگان فنی و مهندسی شهید بهشتی</strong> • بازدید تا ساعت ۱۲-۱ ظهر و صرف ناهار • بازگشت ساعت <strong>۵ الی ۶ عصر</strong> به دانشکدگان
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 w-full sm:w-auto shrink-0">
+                            <button onclick="openScheduleModal()" class="flex-1 bg-white text-emerald-950 hover:bg-emerald-50 text-xs font-black px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                                <i class="fa-regular fa-clock text-emerald-600"></i>
+                                <span>تایم‌لاین ساعتی</span>
+                            </button>
+                            <button onclick="openTermsModal()" class="flex-1 bg-white/15 hover:bg-white/25 text-white border border-white/20 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                                <span>مقررات بازدید</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left Column: Live Capacity, Lottery & Waiting List Card (5 Cols) -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4 relative overflow-hidden">
+                        <div class="flex items-center justify-between border-b border-white/15 pb-3.5">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-emerald-400/20 flex items-center justify-center text-emerald-300">
+                                    <i class="fa-solid fa-users-viewfinder"></i>
+                                </div>
+                                <span class="text-sm font-black text-white">وضعیت زنده قرعه‌کشی و لیست انتظار</span>
+                            </div>
+                            <span id="capacityStatusBadge" class="text-[11px] font-extrabold px-3 py-1 rounded-full bg-emerald-400/25 text-emerald-100 border border-emerald-300/30">
+                                ثبت‌نام اولیه باز است
+                            </span>
+                        </div>
+
+                        <!-- 3-Column Breakdown: Quota / Applicants / Waiting List -->
+                        <div class="grid grid-cols-3 gap-2.5 text-center">
+                            <div class="bg-emerald-500/25 border border-emerald-300/30 rounded-2xl p-3">
+                                <span class="text-[11px] text-emerald-100 block">ظرفیت اصلی</span>
+                                <span id="studentLotteryQuotaText" class="text-2xl font-black text-white mt-0.5 block">۲۰</span>
+                                <span class="text-[10px] text-emerald-200 font-bold">نفر برگزیده</span>
+                            </div>
+                            <div class="bg-white/10 border border-white/15 rounded-2xl p-3">
+                                <span class="text-[11px] text-emerald-100 block">کل متقاضیان</span>
+                                <span id="totalApplicantsCount" class="text-2xl font-black text-white mt-0.5 block">۰</span>
+                                <span class="text-[10px] text-emerald-200 font-bold">ثبت‌نام اولیه</span>
+                            </div>
+                            <div class="bg-purple-500/25 border border-purple-300/30 rounded-2xl p-3">
+                                <span class="text-[11px] text-purple-100 block">لیست انتظار</span>
+                                <span id="waitingListCountHero" class="text-2xl font-black text-white mt-0.5 block">۰</span>
+                                <span class="text-[10px] text-purple-200 font-bold">ذخیره / رزرو</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Progress Bar -->
+                        <div class="bg-black/25 rounded-2xl p-3.5 border border-white/10 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-emerald-100">منتخبین اصلی مشخص‌شده:</span>
+                                <span class="font-extrabold text-white"><strong id="selectedWinnersCount" class="text-emerald-300">۰</strong> از ۲۰ نفر (<strong id="verifiedPaymentsCountHero" class="text-teal-300">۰</strong> واریز قطعی)</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/15 rounded-full overflow-hidden">
+                                <div id="lotterySelectedBar" class="h-full bg-gradient-to-l from-emerald-300 via-emerald-400 to-teal-300 rounded-full transition-all duration-500" style="width: 8%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 4-Step Visual Process Pill -->
+                        <div class="bg-white/10 rounded-2xl p-3.5 border border-white/10 space-y-2">
+                                                    <p class="text-[11px] text-slate-300 leading-relaxed bg-slate-800/50 p-3 rounded-xl border border-slate-700/60">
+                            <i class="fa-solid fa-circle-check text-emerald-300 ml-1"></i>
+                            به دلیل محدودیت حراست کارخانه ماشین‌سازی اراک، ظرفیت کل <strong></strong><strong>۲۰ نفر از طریق قرعه‌کشی</strong> بین دانشجویان ثبت‌نام‌کننده می‌باشد.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-7 pt-6 border-t border-white/15">
+                <div class="glass-panel rounded-2xl p-3.5 flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-white/15 text-emerald-200 flex items-center justify-center shrink-0 text-lg">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-emerald-100/80">تاریخ برگزاری اردو</p>
+                        <p id="infoDate" class="text-sm sm:text-base font-black text-white mt-0.5">۲۹ مهرماه ۱۴۰۵</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-3.5 flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-white/15 text-emerald-200 flex items-center justify-center shrink-0 text-lg">
+                        <i class="fa-solid fa-bus"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-emerald-100/80">رفت و برگشت (اتوبوس)</p>
+                        <p id="infoDuration" class="text-xs sm:text-sm font-black text-white mt-0.5">۴-۵ صبح الی ۵-۶ عصر</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-3.5 flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-white/15 text-emerald-200 flex items-center justify-center shrink-0 text-lg">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-emerald-100/80">پذیرایی کامل اردو</p>
+                        <p class="text-xs sm:text-sm font-black text-white mt-0.5">صبحانه + ناهار + میان‌وعده</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-3.5 flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-white/15 text-emerald-200 flex items-center justify-center shrink-0 text-lg">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-emerald-100/80">هزینه</p>
+                        <p class="text-sm sm:text-base font-black text-white mt-0.5"><span id="infoFee">۱۰۰,۰۰۰</span> تومان</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ======================================================= -->
+        <!-- TAB 1: INITIAL STUDENT REGISTRATION FORM                -->
+        <!-- ======================================================= -->
+        <section id="tabContent-register" class="space-y-8 animate-fade-in">
+
+            <div id="registrationFormWrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- Form Column (8 Cols) -->
+                <form id="campRegistrationForm" class="lg:col-span-8 space-y-6" novalidate>
+
+                    <!-- Step Banner -->
+                    <div class="bg-gradient-to-l from-emerald-50 via-teal-50/70 to-white border border-emerald-200/90 rounded-3xl p-5 flex items-start gap-4 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shrink-0 text-xl shadow-md shadow-emerald-600/20">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <div class="text-xs sm:text-sm text-emerald-950 leading-relaxed">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="font-black text-base text-slate-900">گام اول: ثبت‌نام اولیه در قرعه‌کشی (کاملاً رایگان)</span>
+                                <span class="text-[11px] font-extrabold bg-emerald-600 text-white px-2.5 py-0.5 rounded-full">بدون نیاز به واریز وجه</span>
+                            </div>
+                            مشخصات دانشجویی خود را وارد کنید تا در قرعه‌کشی ۲۰ نفره شرکت داده شوید. پس از قرعه‌کشی، <strong>برگزیدگان اصلی</strong> و در صورت انصراف، <strong>نفرات لیست انتظار (رزرو)</strong> می‌توانند از تب <strong>«نتیجه قرعه‌کشی و ارسال رسید»</strong> فیش واریزی خود را بارگذاری و وضعیت تایید آن را پیگیری نمایند.
+                        </div>
+                    </div>
+
+                    <!-- Section 1: Personal & Student Info -->
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 sm:p-8 card-hover">
+                        <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 font-black flex items-center justify-center text-base shadow-inner">۱</span>
+                                <div>
+                                    <h3 class="text-lg font-black text-slate-900">مشخصات فردی و دانشجویی</h3>
+                                    <p class="text-xs text-slate-500">اطلاعات را منطبق با کارت دانشجویی و کارت ملی (جهت ارسال به حراست ماشین‌سازی اراک) وارد نمایید</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <!-- Full Name -->
+                            <div>
+                                <label for="fullName" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    نام و نام خانوادگی <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-regular fa-user"></i>
+                                    </span>
+                                    <input type="text" id="fullName" required placeholder="مثال: محمدرضا حسینی"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                                </div>
+                                <p id="err-fullName" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+
+                            <!-- National ID -->
+                            <div>
+                                <label for="nationalId" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    کد ملی ۱۰ رقمی <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-regular fa-id-card"></i>
+                                    </span>
+                                    <input type="text" id="nationalId" inputmode="numeric" maxlength="10" required placeholder="0012345678"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-right focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                                </div>
+                                <p id="err-nationalId" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+
+                            <!-- Student ID -->
+                            <div>
+                                <label for="studentId" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    شماره دانشجویی <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </span>
+                                    <input type="text" id="studentId" inputmode="numeric" required placeholder="402243015"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-right focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                                </div>
+                                <p id="err-studentId" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+
+                            <!-- Major (4 Faculty Majors) -->
+                            <div>
+                                <label for="major" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    رشته تحصیلی <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-gears"></i>
+                                    </span>
+                                    <select id="major" class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-emerald-500 outline-none transition">
+                                        <option value="مهندسی مکانیک" selected>مهندسی مکانیک</option>
+                                        <option value="مهندسی صنایع">مهندسی صنایع</option>
+                                        <option value="مهندسی انرژی">مهندسی انرژی</option>
+                                        <option value="مهندسی مواد و متالورژی">مهندسی مواد و متالورژی</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Entry Year & Degree -->
+                            <div>
+                                <label for="entryYear" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    مقطع و سال ورودی <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </span>
+                                    <select id="entryYear" class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-emerald-500 outline-none transition">
+                                        <option value="کارشناسی - ورودی ۱۴۰۴">کارشناسی - ورودی ۱۴۰۴</option>
+                                        <option value="کارشناسی - ورودی ۱۴۰۳" selected>کارشناسی - ورودی ۱۴۰۳</option>
+                                        <option value="کارشناسی - ورودی ۱۴۰۲">کارشناسی - ورودی ۱۴۰۲</option>
+                                        <option value="کارشناسی - ورودی ۱۴۰۱ و ماقبل">کارشناسی - ورودی ۱۴۰۱ و ماقبل</option>
+                                        <option value="کارشناسی ارشد">کارشناسی ارشد</option>
+                                        <option value="دکتری">دکتری</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Number -->
+                            <div>
+                                <label for="mobile" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    شماره تماس <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-mobile-screen"></i>
+                                    </span>
+                                    <input type="tel" id="mobile" inputmode="tel" maxlength="11" required placeholder="09123456789"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-right focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                                </div>
+                                <p id="err-mobile" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+
+                            <!-- Emergency Contact -->
+                            <div class="sm:col-span-2">
+                                <label for="emergencyPhone" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    شماره تماس اضطراری <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-phone-volume"></i>
+                                    </span>
+                                    <input type="tel" id="emergencyPhone" inputmode="tel" maxlength="11" required placeholder="09120000000"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-right focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                                </div>
+                                <p id="err-emergencyPhone" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+                        </div>
+
+                        <!-- Terms & SBU Faculty Checkboxes -->
+                        <div class="mt-6 pt-5 border-t border-slate-100 space-y-3">
+                            <label class="flex items-start gap-3 cursor-pointer select-none p-2.5 rounded-2xl hover:bg-emerald-50/50 transition">
+                                <input type="checkbox" id="sbuMechCheck" class="mt-1 w-5 h-5 rounded-lg border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                                <span class="text-xs sm:text-sm text-slate-700 font-semibold leading-relaxed">
+                                    تایید می‌کنم که دانشجوی فعلی <strong>دانشکده مهندسی مکانیک دانشگاه شهید بهشتی</strong> (رشته‌های مکانیک، صنایع، انرژی یا مواد و متالورژی) هستم. <span class="text-rose-500">*</span>
+                                </span>
+                            </label>
+
+                            <label class="flex items-start gap-3 cursor-pointer select-none p-2.5 rounded-2xl hover:bg-emerald-50/50 transition">
+                                <input type="checkbox" id="termsCheck" class="mt-1 w-5 h-5 rounded-lg border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                                <span class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                                    کلیه <button type="button" onclick="openTermsModal()" class="text-emerald-700 font-extrabold underline hover:text-emerald-800">قوانین ایمنی بازدید ماشین‌سازی اراک</button>، حضور راس ساعت ۴:۳۰ صبح در دانشکدگان فنی و واریز هزینه ۱۰۰,۰۰۰ تومان پس از انخاب شدن در قرعه‌کشی را می‌پذیرم. <span class="text-rose-500">*</span>
+                                </span>
+                            </label>
+                            <p id="err-terms" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mt-6">
+                            <button type="submit" id="submitBtn" class="btn-shine w-full py-4 px-6 rounded-2xl bg-gradient-to-l from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-base shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2.5">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>ثبت‌نام رایگان در قرعه‌کشی و دریافت کد رهگیری</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+                    <!-- Summary Card -->
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 card-hover">
+                        <div class="flex items-center gap-2.5 pb-3.5 mb-4 border-b border-slate-100">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <h4 class="font-black text-base text-slate-900">شناسنامه و خدمات اردو</h4>
+                        </div>
+
+                        <ul class="space-y-3.5 text-xs sm:text-sm text-slate-600">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                                <div>
+                                    <span class="font-extrabold text-slate-800 block">برگزارکننده:</span>
+                                    <span>پایگاه پیشران — دانشکده مهندسی مکانیک دانشگاه شهید بهشتی</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                                <div>
+                                    <span class="font-extrabold text-slate-800 block">مقصد و تاریخ:</span>
+                                    <span>کارخانه ماشین‌سازی اراک — ۲۹ مهرماه ۱۴۰۵</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                                <div>
+                                    <span class="font-extrabold text-slate-800 block">ساعت حرکت و بازگشت:</span>
+                                    <span>حرکت ۴ تا ۵ صبح از دانشکدگان فنی • بازگشت ۵ تا ۶ عصر</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                                <div>
+                                    <span class="font-extrabold text-slate-800 block">پذیرایی و تردد:</span>
+                                    <span>صبحانه + ناهار + میان‌وعده + اتوبوس دربست</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-purple-600 mt-1"></i>
+                                <div>
+                                    <span class="font-extrabold text-slate-800 block">قرعه‌کشی و لیست انتظار:</span>
+                                    <span>۲۰ نفر اصلی + لیست انتظار نوبت‌دار (در صورت انصراف نفرات اصلی، درگاه پرداخت برای نفرات لیست انتظار باز می‌شود).</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-5 pt-4 border-t border-dashed border-slate-200 space-y-2.5">
+                            <div class="flex justify-between items-center bg-slate-50 border border-slate-200 px-4 py-2.5 rounded-2xl">
+                                <span class="text-xs font-bold text-slate-600">هزینه ثبت‌نام اولیه:</span>
+                                <span class="text-sm font-black text-emerald-600">رایگان (۰ تومان)</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-emerald-50 border border-emerald-200 px-4 py-2.5 rounded-2xl">
+                                <span class="text-xs font-bold text-emerald-950">واریز پس از انتخاب شدن در قرعه‌کشی:</span>
+                                <span class="text-sm font-black text-emerald-700">۱۰۰,۰۰۰ تومان</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Support Card -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 rounded-3xl border border-emerald-200/80 p-6 space-y-4 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/20">
+                                <i class="fa-brands fa-telegram text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-black text-sm text-slate-900">پشتیبانی پایگاه پیشران</h5>
+                                <p class="text-[11px] text-slate-500">پاسخگویی به سوالات دانشجویان</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            در صورت داشتن هرگونه سوال درباره روند قرعه‌کشی، لیست انتظار یا تایید فیش واریزی می‌توانید با اکانت پشتیبانی در ارتباط باشید.
+                        </p>
+                        <button type="button" onclick="window.open('http://t.me/pishran_mech?direct', '_blank')" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-emerald-600 hover:text-white text-emerald-700 border border-emerald-300 text-xs font-extrabold transition shadow-sm flex items-center justify-center gap-1.5">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <span>پیام به @pishran_mech</span>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- TAB 2: TRACK LOTTERY, WAITING LIST & UPLOAD RECEIPT     -->
+        <!-- ======================================================= -->
+        <section id="tabContent-track" class="hidden space-y-8 animate-fade-in">
+            <!-- Search Box -->
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
+                <div class="text-center space-y-2 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center mx-auto text-2xl shadow-lg shadow-emerald-600/20">
+                        <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900">استعلام نتیجه قرعه‌کشی، وضعیت لیست انتظار و ارسال رسید</h3>
+                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-xl mx-auto">
+                        شماره دانشجویی، کد ملی ۱۰ رقمی یا کد رهگیری خود را وارد کنید تا <strong>نتیجه قرعه‌کشی</strong>، <strong>رتبه در لیست انتظار</strong>، <strong>درگاه آپلود فیش ۱۰۰,۰۰۰ تومانی</strong> و <strong>وضعیت تایید واریز</strong> خود را مشاهده نمایید.
+                    </p>
+                </div>
+
+                <form onsubmit="handleTrackSearch(event)" class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+                            <i class="fa-solid fa-id-badge"></i>
+                        </span>
+                        <input type="text" id="trackQueryInput" required placeholder="شماره دانشجویی، کد ملی یا کد رهگیری (مثال: 402243015)..."
+                            class="w-full pr-11 pl-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-center sm:text-right focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition">
+                    </div>
+                    <button type="submit" class="btn-shine px-7 py-3.5 rounded-2xl bg-gradient-to-l from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-sm transition flex items-center justify-center gap-2 shrink-0 shadow-md shadow-emerald-600/20">
+                        <span>بررسی وضعیت و ادامه</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- ======================================================= -->
+            <!-- STUDENT STATUS PORTAL, RECEIPT UPLOAD & DIGITAL PASS    -->
+            <!-- ======================================================= -->
+            <div id="digitalTicketSection" class="hidden max-w-3xl mx-auto space-y-6 animate-fade-in">
+
+                <!-- 4-STEP VISUAL PROGRESS TRACKER -->
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm no-print">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-black text-slate-500">مسیر پیشرفت ثبت‌نام شما در اردو:</span>
+                        <span id="stepperOverallBadge" class="text-xs font-extrabold px-3 py-1 rounded-full bg-amber-100 text-amber-800">در انتظار قرعه‌کشی</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="studentProgressStepper">
+                        <!-- Dynamically rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Dynamic Lottery & Post-Lottery Receipt Upload Box -->
+                <div id="postLotteryActionContainer" class="no-print">
+
+                    <!-- STATE 1: Waiting for Lottery -->
+                    <div id="stateWaitingLottery" class="hidden bg-gradient-to-l from-amber-50 to-orange-50/60 border border-amber-200 rounded-3xl p-6 flex items-start gap-4 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 text-xl shadow-md shadow-amber-500/20">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                        </div>
+                        <div class="space-y-1.5 text-xs sm:text-sm">
+                            <h4 class="font-black text-amber-950 text-base">ثبت‌نام اولیه شما انجام شده و در لیست قرعه‌کشی قرار دارید</h4>
+                            <p class="text-amber-900 leading-relaxed">
+                                در این مرحله نیازی به واریز وجه نیست. پس از انجام قرعه‌کشی ۲۰ نفره توسط <strong>پایگاه پیشران</strong>، مجدداً با کد ملی یا شماره دانشجویی خود همین صفحه را بررسی کنید؛ در صورت برگزیده شدن، بخش بارگذاری رسید واریز (۱۰۰,۰۰۰ تومان) برایتان فعال می‌شود.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STATE 2: Waiting List / Reserve (لیست انتظار نوبت‌دار) -->
+                    <div id="stateReserveLottery" class="hidden bg-gradient-to-l from-purple-50 via-indigo-50/40 to-white border-2 border-purple-200 rounded-3xl p-6 space-y-4 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-13 h-13 p-3.5 rounded-2xl bg-purple-600 text-white flex items-center justify-center shrink-0 text-xl shadow-md shadow-purple-600/20">
+                                    <i class="fa-solid fa-list-ol"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <span class="text-[11px] font-extrabold bg-purple-100 text-purple-800 px-3 py-0.5 rounded-full border border-purple-200">لیست انتظار (ذخیره قرعه‌کشی)</span>
+                                        <span id="reserveRankBadge" class="text-xs font-black bg-purple-700 text-white px-3 py-0.5 rounded-full">اولویت رزرو: نفر ۱</span>
+                                    </div>
+                                    <h4 class="font-black text-purple-950 text-base pt-1">نام شما در «لیست انتظار» اردوی ماشین‌سازی اراک قرار دارد</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-purple-900 leading-relaxed bg-white/80 p-4 rounded-2xl border border-purple-100">
+                            <i class="fa-solid fa-circle-info text-purple-600 ml-1"></i>
+                            در صورتی که هر یک از ۲۰ نفر برگزیده اصلی در مهلت مقرر فیش واریزی خود را ارسال نکنند یا انصراف دهند، به ترتیب اولویت از لیست انتظار جایگزین می‌شوند و <strong>درگاه پرداخت و آپلود فیش در همین صفحه برای شما باز خواهد شد.</strong>
+                        </p>
+                    </div>
+
+                    <!-- STATE 3: Winner State — Payment & Receipt Upload Form -->
+                    <div id="stateWinnerPaymentForm" class="hidden bg-white rounded-3xl shadow-lg border-2 border-emerald-500 p-6 sm:p-8 space-y-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shrink-0 text-xl shadow-md shadow-emerald-600/20">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-200">تبریک! برگزیده قرعه‌کشی ۲۰ نفره</span>
+                                    <h4 class="text-base sm:text-lg font-black text-slate-900 mt-1">واریز هزینه اردو و بارگذاری تصویر رسید</h4>
+                                </div>
+                            </div>
+                            <span id="winnerPaymentStatePill" class="text-xs font-extrabold px-3.5 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 self-start sm:self-center">
+                                وضعیت: در انتظار واریز وجه
+                            </span>
+                        </div>
+
+                        <!-- Rejection alert if previously rejected -->
+                        <div id="rejectedReceiptAlert" class="hidden bg-rose-50 border border-rose-200 rounded-2xl p-4 text-xs text-rose-800 font-bold">
+                            <i class="fa-solid fa-triangle-exclamation text-rose-600 ml-1"></i>
+                            فیش قبلی ارسالی شما توسط برگزارکننده تایید نشد (تصویر ناخوانا یا مغایرت اطلاعات). لطفاً تصویر واضح فیش واریزی و کد پیگیری را مجدداً بارگذاری نمایید.
+                        </div>
+
+                        <!-- Bank Card Box for Winners -->
+                        <div class="bg-gradient-to-l from-emerald-950 via-emerald-900 to-teal-900 text-white rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md relative overflow-hidden">
+                            <div class="space-y-1.5 relative z-10">
+                                <span class="text-xs text-emerald-200 font-medium">شماره کارت جهت واریز هزینه اردو (پایگاه پیشران):</span>
+                                <div class="flex items-center gap-3">
+                                    <p id="bankCardNumber" class="text-lg sm:text-2xl font-mono font-black tracking-wider dir-ltr">6037-9975-9912-4481</p>
+                                    <button type="button" onclick="copyBankCard()" class="text-xs bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 font-bold">
+                                        <i class="fa-regular fa-copy"></i>
+                                        <span>کپی شماره کارت</span>
+                                    </button>
+                                </div>
+                                <p class="text-[11px] text-emerald-100/90">شامل: رفت‌وبرگشت با اتوبوس + صبحانه + ناهار + میان‌وعده</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3 text-right sm:text-left w-full sm:w-auto shrink-0 relative z-10">
+                                <span class="text-xs text-emerald-200 block">مبلغ قابل پرداخت:</span>
+                                <span class="text-xl font-black text-white">۱۰۰,۰۰۰ تومان</span>
+                            </div>
+                        </div>
+
+                        <!-- Reference Number Input + File Dropzone -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="sm:col-span-2">
+                                <label for="receiptRefInput" class="block text-sm font-bold text-slate-700 mb-1.5">
+                                    شماره پیگیری بانکی یا ۴ رقم آخر کارت واریزکننده <span class="text-rose-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                        <i class="fa-solid fa-hashtag"></i>
+                                    </span>
+                                    <input type="text" id="receiptRefInput" placeholder="مثال: پیگیری 849302 یا ۴ رقم آخر کارت 4512"
+                                        class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono focus:bg-white focus:border-emerald-500 outline-none transition">
+                                </div>
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2">
+                                    تصویر فیش واریزی (۱۰۰,۰۰۰ تومان) <span class="text-rose-500">*</span>
+                                </label>
+
+                                <div id="receiptDropzone" onclick="document.getElementById('receiptFile').click()"
+                                    class="border-2 border-dashed border-emerald-300 hover:border-emerald-500 bg-emerald-50/30 hover:bg-emerald-50/60 rounded-2xl p-6 text-center cursor-pointer transition">
+                                    <input type="file" id="receiptFile" accept="image/*" class="hidden" onchange="handleReceiptUpload(event)">
+
+                                    <div id="receiptEmptyState" class="space-y-2">
+                                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-xl">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        </div>
+                                        <p class="text-sm font-extrabold text-slate-700">برای انتخاب تصویر اسکرین‌شات یا عکس فیش واریزی کلیک کنید</p>
+                                        <p class="text-xs text-slate-400">فرمت‌های مجاز: JPG, PNG — قابل بررسی مستقیم در پنل برگزارکننده</p>
+                                    </div>
+
+                                    <!-- Preview Container -->
+                                    <div id="receiptPreviewContainer" class="hidden flex-col sm:flex-row items-center justify-between gap-4 bg-white p-3.5 rounded-2xl border border-emerald-200 shadow-sm">
+                                        <div class="flex items-center gap-3.5">
+                                            <img id="receiptPreviewImg" src="" alt="پیش‌نمایش فیش" class="w-16 h-16 object-cover rounded-xl border border-slate-200">
+                                            <div class="text-right">
+                                                <p id="receiptFileName" class="text-sm font-bold text-slate-800 truncate max-w-[220px]">receipt.jpg</p>
+                                                <p id="receiptFileSize" class="text-xs text-emerald-600 font-bold mt-0.5">آماده ارسال</p>
+                                            </div>
+                                        </div>
+                                        <button type="button" onclick="clearReceiptUpload(event)" class="text-xs font-extrabold text-rose-600 hover:bg-rose-50 px-3 py-2 rounded-xl transition">
+                                            <i class="fa-regular fa-trash-can ml-1"></i>حذف و تغییر تصویر
+                                        </button>
+                                    </div>
+                                </div>
+                                <p id="err-receipt" class="hidden text-xs text-rose-600 mt-1.5 font-medium"></p>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="submitWinnerReceipt()" class="btn-shine w-full py-4 px-6 rounded-2xl bg-gradient-to-l from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-sm sm:text-base shadow-lg shadow-emerald-600/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>ارسال رسید واریزی جهت بررسی و تایید نهایی</span>
+                        </button>
+                    </div>
+
+                    <!-- STATE 4: Winner State — Receipt Submitted (Pending Verification OR Verified) -->
+                    <div id="stateWinnerReceiptSubmitted" class="hidden rounded-3xl p-6 border-2 space-y-4">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-4">
+                                <div id="submittedReceiptIconBox" class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 text-xl shadow-md">
+                                    <i id="submittedReceiptIcon" class="fa-solid fa-file-circle-check"></i>
+                                </div>
+                                <div class="space-y-1 text-xs sm:text-sm">
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <span id="submittedStatusBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">در انتظار بررسی فیش</span>
+                                        <span id="submittedReceiptRefText" class="text-xs font-mono text-slate-500"></span>
+                                    </div>
+                                    <h4 id="submittedReceiptTitle" class="font-black text-slate-900 text-base pt-0.5">رسید واریزی شما ثبت شده است</h4>
+                                    <p id="submittedReceiptDesc" class="text-slate-600 leading-relaxed">
+                                        فیش ۱۰۰,۰۰۰ تومانی شما در سامانه بارگذاری شده است.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" onclick="reopenWinnerReceiptForm()" class="text-xs font-extrabold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-3.5 py-2.5 rounded-xl transition shrink-0 shadow-sm">
+                                <i class="fa-solid fa-pen-to-square ml-1 text-emerald-600"></i>ویرایش / ارسال مجدد فیش
+                            </button>
+                        </div>
+
+                        <!-- Uploaded Receipt Thumbnail Inside Student Portal -->
+                        <div id="studentReceiptThumbBox" class="hidden bg-white/80 rounded-2xl p-3.5 border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <img id="studentUploadedReceiptImg" src="" alt="رسید ارسالی" class="w-16 h-16 object-cover rounded-xl border border-emerald-300 cursor-pointer shadow-sm hover:scale-105 transition" onclick="previewReceiptFull(this.src)">
+                                <div class="text-xs space-y-1">
+                                    <span class="font-extrabold text-slate-800 block">تصویر فیش ذخیره شده شما در سامانه</span>
+                                    <span class="text-slate-500 block">برای بزرگ‌نمایی یا دانلود روی تصویر کلیک کنید</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="previewReceiptFull(document.getElementById('studentUploadedReceiptImg').src)" class="px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-extrabold border border-emerald-200 transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>مشاهده فیش</span>
+                                </button>
+                                <button type="button" onclick="downloadCurrentStudentReceipt()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-extrabold transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-download"></i>
+                                    <span>دانلود فایل فیش</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Bar Above Printable Ticket -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 no-print shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-id-card-clip text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm sm:text-base">کارت دیجیتال شرکت در اردو</h4>
+                            <p class="text-xs text-slate-500">کد رهگیری خود را جهت استعلام‌های بعدی یادداشت یا کارت را چاپ نمایید.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                        <button onclick="window.print()" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print"></i>
+                            <span>چاپ / ذخیره PDF</span>
+                        </button>
+                        <button onclick="switchTab('register')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-xl transition">
+                            ثبت‌نام جدید
+                        </button>
+                    </div>
+                </div>
+
+                <div id="printableTicketArea" class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+                    <!-- Ticket Header -->
+                    <div class="bg-gradient-to-l from-emerald-900 via-emerald-800 to-teal-800 text-white p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl border border-white/20">
+                                <i class="fa-solid fa-industry"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-emerald-200 font-bold">پایگاه پیشران | دانشکده مهندسی مکانیک دانشگاه شهید بهشتی</span>
+                                <h3 id="ticketCampTitle" class="text-lg sm:text-xl font-black text-white mt-0.5">کارت اردوی بازدید از کارخانه ماشین‌سازی اراک</h3>
+                            </div>
+                        </div>
+                        <div class="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-2 text-right sm:text-left">
+                            <span class="text-[11px] text-emerald-100 block">کد رهگیری:</span>
+                            <div class="flex items-center gap-2">
+                                <span id="ticketTrackingCode" class="font-mono font-black text-lg text-white tracking-wider">CAMP-849201</span>
+                                <button onclick="copyTrackingCode()" class="no-print text-xs text-emerald-200 hover:text-white" title="کپی کد رهگیری">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ticket Body -->
+                    <div class="grid grid-cols-1 md:grid-cols-12">
+                        <!-- Participant Details (8 Cols) -->
+                        <div class="md:col-span-8 p-6 sm:p-8 space-y-5 border-b md:border-b-0 md:border-l border-dashed border-slate-200">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-xs text-slate-400">نام و نام خانوادگی دانشجو</span>
+                                    <h4 id="ticketFullName" class="text-xl font-black text-slate-900 mt-0.5">-</h4>
+                                </div>
+                                <div class="flex flex-col items-end gap-1.5">
+                                    <span id="ticketLotteryBadge" class="px-3.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-200">
+                                        در انتظار قرعه‌کشی
+                                    </span>
+                                    <span id="ticketPaymentBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600">
+                                        وضعیت واریز: پس از قرعه‌کشی
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
+                                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                    <span class="text-[11px] text-slate-400 block">شماره دانشجویی</span>
+                                    <span id="ticketStudentId" class="font-mono font-bold text-sm text-slate-800">-</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                    <span class="text-[11px] text-slate-400 block">کد ملی</span>
+                                    <span id="ticketNationalId" class="font-mono font-bold text-sm text-slate-800">-</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                    <span class="text-[11px] text-slate-400 block">شماره موبایل</span>
+                                    <span id="ticketMobile" class="font-mono font-bold text-sm text-slate-800">-</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                    <span class="text-[11px] text-slate-400 block">رشته تحصیلی</span>
+                                    <span id="ticketMajor" class="font-bold text-xs text-emerald-800">-</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 sm:col-span-2">
+                                    <span class="text-[11px] text-slate-400 block">مقطع و سال ورودی</span>
+                                    <span id="ticketEntryYear" class="font-bold text-xs text-slate-800">-</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-3.5 text-xs text-emerald-950 space-y-1.5">
+                                <div class="flex flex-wrap justify-between gap-2">
+                                    <span><i class="fa-regular fa-calendar text-emerald-600 ml-1"></i>تاریخ: <strong>۲۹ مهرماه ۱۴۰۵</strong></span>
+                                    <span><i class="fa-solid fa-bus text-emerald-600 ml-1"></i>حرکت: <strong>ساعت ۴ الی ۵ صبح - دانشکدگان فنی بهشتی</strong></span>
+                                </div>
+                                <div class="text-emerald-800 text-[11px] flex flex-wrap justify-between gap-2 pt-1 border-t border-emerald-200/60">
+                                    <span>پذیرایی: صبحانه، ناهار، میان‌وعده</span>
+                                    <span>بازگشت به دانشکدگان: ساعت ۵ الی ۶ عصر</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QR Code Stub (4 Cols) -->
+                        <div class="md:col-span-4 p-6 bg-slate-50/60 flex flex-col items-center justify-center text-center space-y-3">
+                            <div id="ticketQrContainer" class="w-32 h-32 bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center"></div>
+                            <div>
+                                <p class="text-xs font-extrabold text-slate-800">بارکد پذیرش اردو</p>
+                                <p class="text-[11px] font-bold text-emerald-700 mt-0.5">پایگاه پیشران</p>
+                            </div>
+                            <span class="text-[11px] text-slate-400 leading-tight">
+                                همراه داشتن کارت دانشجویی و کارت ملی در روز حرکت الزامی است.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- TAB 3: PASSWORD-PROTECTED ORGANIZER PANEL (PISHRAN)     -->
+        <!-- ======================================================= -->
+        <section id="tabContent-admin" class="hidden space-y-6 animate-fade-in">
+
+            <!-- 1. SECURITY GATE / LOGIN VIEW -->
+            <div id="adminLockScreen" class="max-w-md mx-auto bg-white rounded-3xl shadow-sm border border-slate-200/80 overflow-hidden my-6">
+                <div class="h-2 w-full bg-gradient-to-l from-emerald-500 to-teal-600"></div>
+                <div class="p-6 sm:p-8 text-center space-y-5">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">دسترسی ویژه برگزارکنندگان</span>
+                        <h3 class="text-xl font-black text-slate-900 mt-2">ورود به پنل برگزارکننده (پایگاه پیشران)</h3>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                            جهت مشاهده لیست ثبت‌نام‌کنندگان، اجرای قرعه‌کشی ۲۰ نفره، مدیریت لیست انتظار و تایید فیش‌های واریزی رمز عبور را وارد کنید.
+                        </p>
+                    </div>
+
+                    <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-right">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">رمز عبور پنل برگزارکننده</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                    <i class="fa-solid fa-key"></i>
+                                </span>
+                                <input type="password" id="adminPasswordInput" required placeholder="رمز عبور مدیریت..."
+                                    class="w-full pr-10 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-mono text-left dir-ltr focus:bg-white focus:border-emerald-500 outline-none transition">
+                            </div>
+                            <p id="adminLoginError" class="hidden text-xs text-rose-600 font-bold mt-1.5">رمز عبور وارد شده صحیح نمی‌باشد!</p>
+                        </div>
+
+                        <button type="submit" class="btn-shine w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm transition flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                            <span>ورود به پنل مدیریت اردو</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 2. UNLOCKED ADMIN DASHBOARD -->
+            <div id="adminUnlockedDashboard" class="hidden space-y-6">
+
+                <!-- Top Executive Bar -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 shadow-sm">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <h3 class="text-lg sm:text-xl font-black text-slate-900">پنل مدیریت برگزارکننده — پایگاه پیشران</h3>
+                            <span id="cloudSyncBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                                ذخیره محلی (آماده اتصال ابری)
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">
+                            قرعه‌کشی ۲۰ نفر اصلی، مدیریت لیست انتظار نوبت‌دار، بررسی تصویری فیش‌های واریزی و خروجی اکسل
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="openDeployGuideModal()" class="px-3.5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-extrabold transition flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>راهنمای گوگل‌شیت و انتشار سایت</span>
+                        </button>
+                        <button onclick="syncFromCloud(true)" class="px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>بروزرسانی</span>
+                        </button>
+                        <button onclick="openCampSettingsModal()" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-gear text-emerald-600"></i>
+                            <span>تنظیمات</span>
+                        </button>
+                        <button onclick="lockAdminPanel()" class="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white border border-rose-200 text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>قفل پنل</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SMART LOTTERY & WAITING LIST MACHINE BOX -->
+                <div class="bg-gradient-to-l from-emerald-50 via-white to-purple-50/60 rounded-3xl p-6 border border-emerald-200 shadow-sm">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                        <div class="space-y-2 max-w-2xl">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 bg-emerald-600 text-white text-xs font-extrabold px-3 py-1 rounded-full">
+                                    <i class="fa-solid fa-dice"></i>
+                                    <span>قرعه‌کشی هوشمند + لیست انتظار خودکار</span>
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 bg-purple-100 text-purple-800 text-xs font-extrabold px-3 py-1 rounded-full border border-purple-200">
+                                    <i class="fa-solid fa-arrow-up-right-dots"></i>
+                                    <span>قابلیت جایگزینی نفرات انصرافی از لیست انتظار</span>
+                                </span>
+                            </div>
+                            <h4 class="text-lg font-black text-slate-900">انتخاب تصادفی ۲۰ نفر برگزیده اصلی + رتبه‌بندی سایر متقاضیان در «لیست انتظار»</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                با اجرای قرعه‌کشی، <strong>۲۰ نفر به عنوان «منتخب قرعه‌کشی»</strong> انتخاب شده و درگاه آپلود فیش برایشان فعال می‌شود. سایر ثبت‌نام‌کنندگان به ترتیب تصادفی با نوبت مشخص (اولویت ۱، ۲، ۳ و...) وارد <strong>«لیست انتظار»</strong> می‌شوند تا در صورت عدم واریز یا انصراف هر یک از نفرات اصلی، با یک کلیک جایگزین گردند.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                            <button onclick="runSmartLottery()" class="btn-shine px-5 py-3.5 rounded-2xl bg-gradient-to-l from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-xs sm:text-sm transition shadow-md shadow-emerald-600/20 flex items-center gap-2">
+                                <i class="fa-solid fa-shuffle text-base"></i>
+                                <span>قرعه‌کشی خودکار (۲۰ نفر + لیست انتظار)</span>
+                            </button>
+                            <button onclick="promoteNextFromWaitingList()" class="px-4 py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs transition shadow-sm flex items-center gap-1.5" title="نفر اول لیست انتظار را وارد لیست برگزیدگان اصلی می‌کند">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>فراخوانی نفر اول لیست انتظار</span>
+                            </button>
+                            <button onclick="resetLotteryStatuses()" class="px-3.5 py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-bold text-xs transition">
+                                <i class="fa-solid fa-rotate-left ml-1"></i>بازنشانی
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid (4 Cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">کل متقاضیان ثبت‌نامی</p>
+                            <p id="statTotalStudents" class="text-2xl font-black text-slate-900 mt-1">۰</p>
+                            <span class="text-[11px] text-slate-400">ثبت‌نام اولیه رایگان</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-emerald-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">منتخبین اصلی قرعه‌کشی</p>
+                            <p id="statLotteryWinners" class="text-2xl font-black text-emerald-600 mt-1">۰ / ۲۰</p>
+                            <span class="text-[11px] text-emerald-600 font-bold">مجاز به واریز و ارسال فیش</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-purple-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">افراد در لیست انتظار</p>
+                            <p id="statWaitingListCount" class="text-2xl font-black text-purple-600 mt-1">۰</p>
+                            <span class="text-[11px] text-purple-600 font-bold">ذخیره با اولویت نوبت</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-list-ol"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-amber-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">وضعیت فیش‌ها و واریزی</p>
+                            <p id="statTotalRevenue" class="text-lg font-black text-slate-900 mt-1">۰ تومان</p>
+                            <span id="statReceiptsBreakdown" class="text-[11px] text-amber-700 font-bold">۰ تایید شده | ۰ منتظر بررسی</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200/80 overflow-hidden">
+                    <!-- Filter & Export Bar -->
+                    <div class="p-5 border-b border-slate-100 flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-4">
+                        <div class="relative flex-1">
+                            <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <input type="text" id="adminSearchInput" oninput="renderAdminTable()" placeholder="جستجوی نام، رشته، شماره دانشجویی، کد ملی، موبایل یا کد رهگیری..."
+                                class="w-full pr-10 pl-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:border-emerald-500 outline-none transition">
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <select id="adminLotteryFilter" onchange="renderAdminTable()" class="px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none focus:border-emerald-500">
+                                <option value="ALL">همه وضعیت‌های قرعه‌کشی</option>
+                                <option value="منتخب قرعه‌کشی">منتخبین قرعه‌کشی (۲۰ نفر)</option>
+                                <option value="لیست انتظار">لیست انتظار (ذخیره)</option>
+                                <option value="در انتظار قرعه‌کشی">در انتظار قرعه‌کشی</option>
+                            </select>
+
+                            <select id="adminPaymentFilter" onchange="renderAdminTable()" class="px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none focus:border-emerald-500">
+                                <option value="ALL">همه وضعیت‌های واریز</option>
+                                <option value="بررسی فیش">فیش ارسال‌شده (منتظر بررسی)</option>
+                                <option value="تایید شده">واریز تایید شده (قطعی)</option>
+                                <option value="در انتظار واریز وجه">در انتظار واریز وجه</option>
+                                <option value="رد شده">فیش رد شده</option>
+                            </select>
+
+                            <button onclick="exportToExcelCSV(true)" class="px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-file-csv"></i>
+                                <span>اکسل منتخبین</span>
+                            </button>
+
+                            <button onclick="exportToExcelCSV(false)" class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-file-excel text-emerald-400"></i>
+                                <span>اکسل کل لیست</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-xs border-b border-slate-200">
+                                    <th class="py-3.5 px-4 font-bold">ردیف / کد</th>
+                                    <th class="py-3.5 px-4 font-bold">نام دانشجو</th>
+                                    <th class="py-3.5 px-4 font-bold">رشته / ورودی</th>
+                                    <th class="py-3.5 px-4 font-bold">ش.دانشجویی / کدملی</th>
+                                    <th class="py-3.5 px-4 font-bold">تماس</th>
+                                    <th class="py-3.5 px-4 font-bold">وضعیت قرعه‌کشی و نوبت</th>
+                                    <th class="py-3.5 px-4 font-bold">بررسی فیش و وضعیت واریز</th>
+                                    <th class="py-3.5 px-4 font-bold text-center">عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                    </div>
+
+                    <div id="adminEmptyState" class="hidden p-12 text-center space-y-2">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-regular fa-folder-open"></i>
+                        </div>
+                        <p class="font-bold text-slate-700">هنوز دانشجویی در این دسته‌بندی یافت نشد</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Only place where Basij is mentioned) -->
+    <footer class="bg-white border-t border-slate-200/80 mt-12 py-6 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-compass text-emerald-600"></i>
+                <span>سامانه ثبت‌نام اردوی بازدید از ماشین‌سازی اراک — <strong class="text-slate-800">پایگاه پیشران</strong> (بسیج دانشجویی دانشکده مهندسی مکانیک دانشگاه شهید بهشتی)</span>
+            </div>
+            <div class="flex items-center gap-4 font-semibold">
+                <button onclick="openScheduleModal()" class="hover:text-emerald-600 transition">برنامه ساعتی اردو</button>
+                <span>•</span>
+                <button onclick="openTermsModal()" class="hover:text-emerald-600 transition">قوانین و مقررات</button>
+                <span>•</span>
+                <button onclick="switchTab('admin')" class="hover:text-emerald-600 transition">پنل برگزارکننده</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: RULES & ELIGIBILITY -->
+    <div id="termsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-5 bg-emerald-700 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-scale-balanced text-emerald-200 text-lg"></i>
+                    <h3 class="font-extrabold text-base">شرایط و مقررات اردوی بازدید از ماشین‌سازی اراک</h3>
+                </div>
+                <button onclick="closeTermsModal()" class="w-8 h-8 rounded-lg hover:bg-white/10 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-900 font-bold">
+                    این اردو صرفاً مخصوص دانشجویان دانشکده مهندسی مکانیک دانشگاه شهید بهشتی (رشته‌های مهندسی مکانیک، صنایع، انرژی و مواد و متالورژی) است و حرکت ساعت ۴ الی ۵ صبح روز ۲۹ مهر ۱۴۰۵ از دانشکدگان فنی می‌باشد.
+                </div>
+                <ul class="list-disc pr-5 space-y-2.5">
+                    <li><strong>عکاسی و فیلم‌برداری:</strong> طبق مقررات حراست کارخانه ماشین‌سازی اراک، عکاسی در سالن‌های تولید صرفاً با اجازه مسئول روابط عمومی کارخانه مجاز است. </li>
+                    <li><strong>قوانین ایمنی (HSE) ماشین‌سازی اراک:</strong> پوشیدن کفش بسته مناسب، استفاده از کلاه ایمنی تحویلی در سالن‌های تولید و عدم جدایی از گروه الزامی است.</li>
+                    <li><strong>همراه داشتن مدارک:</strong> همراه داشتن کارت دانشجویی و کارت ملی در روز حرکت الزامی است.</li>
+                    <li><strong>پذیرایی و تردد:</strong> رفت و آمد با اتوبوس دربست بوده و صبحانه، ناهار و میان‌وعده به عهده پایگاه پیشران است.</li>
+                </ul>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="acceptTermsFromModal()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition">
+                    شرایط را مطالعه کردم و می‌پذیرم
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: DETAILED SCHEDULE -->
+    <div id="scheduleModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-5 bg-emerald-700 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-regular fa-clock text-emerald-200 text-lg"></i>
+                    <h3 class="font-extrabold text-base">برنامه زمان‌بندی اردوی ماشین‌سازی اراک (۲۹ مهر ۱۴۰۵)</h3>
+                </div>
+                <button onclick="closeScheduleModal()" class="w-8 h-8 rounded-lg hover:bg-white/10 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-sm">
+                <div class="flex gap-4 items-start">
+                    <span class="px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-mono font-bold text-xs shrink-0">۰۴:۳۰ - ۰۵:۰۰</span>
+                    <div>
+                        <h4 class="font-extrabold text-slate-900">حرکت از دانشکدگان فنی و مهندسی دانشگاه شهید بهشتی</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">سوار شدن به اتوبوس، حرکت به سمت اراک و توزیع صبحانه.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="px-3 py-1.5 rounded-xl bg-teal-100 text-teal-800 font-mono font-bold text-xs shrink-0">۰۸:۰۰ - ۰۹:۰۰</span>
+                    <div>
+                        <h4 class="font-extrabold text-slate-900">رسیدن به کارخانه ماشین‌سازی اراک</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">پذیرش حراست و معارفه اولیه بازدید.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-mono font-bold text-xs shrink-0">۰۹:۰۰ - ۱۳:۰۰</span>
+                    <div>
+                        <h4 class="font-extrabold text-slate-900">بازدید علمی از سالن‌ها و خطوط تولید کارخانه</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">بازدید تخصصی از بخش‌های متالورژی، آهنگری، بویلرسازی، مخازن تحت فشار و ماشین‌کاری سنگین.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="px-3 py-1.5 rounded-xl bg-amber-100 text-amber-800 font-mono font-bold text-xs shrink-0">۱۳:۰۰ - ۱۴:۰۰</span>
+                    <div>
+                        <h4 class="font-extrabold text-slate-900">اقامه نماز، صرف ناهار و استراحت</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">صرف ناهار گرم و حرکت به سمت تهران.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-800 font-mono font-bold text-xs shrink-0">۱۷:۰۰ - ۱۸:۰۰</span>
+                    <div>
+                        <h4 class="font-extrabold text-slate-900">بازگشت به دانشکدگان فنی و مهندسی شهید بهشتی</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">پذیرایی میان‌وعده در اتوبوس و رسیدن به دانشکدگان فنی حدود ساعت ۵ الی ۶ عصر.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="closeScheduleModal()" class="px-5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: ADMIN SETTINGS -->
+    <div id="campSettingsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-5 bg-emerald-700 text-white flex items-center justify-between">
+                <h3 class="font-extrabold text-base">تنظیمات اردو، رمز پنل و اتصال به دیتابیس آنلاین</h3>
+                <button onclick="closeCampSettingsModal()" class="w-8 h-8 rounded-lg hover:bg-white/10 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form onsubmit="saveCampSettings(event)" class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">شماره کارت جهت واریز ۱۰۰,۰۰۰ تومان</label>
+                        <input type="text" id="editBankCard" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono dir-ltr text-left">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">ظرفیت برگزیدگان اصلی قرعه‌کشی</label>
+                        <input type="number" id="editStudentQuota" required min="1" max="100" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono">
+                    </div>
+                </div>
+
+                <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2">
+                    <label class="block font-extrabold text-emerald-950">رمز عبور ورود به پنل برگزارکننده (پایگاه پیشران)</label>
+                    <input type="text" id="editAdminPassword" required class="w-full px-3.5 py-2.5 bg-white border border-emerald-300 rounded-xl font-mono text-left dir-ltr">
+                </div>
+
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+                    <label class="block font-extrabold text-slate-800">
+                        <i class="fa-solid fa-cloud text-emerald-600 ml-1"></i>
+                        آدرس وب‌هوک ابری (Google Sheets Web App URL)
+                    </label>
+                    <input type="url" id="editCloudUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl font-mono text-xs text-left dir-ltr">
+                </div>
+
+                <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
+                    <button type="button" onclick="closeCampSettingsModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold">انصراف</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold">ذخیره تغییرات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: PARTICIPANT DETAILS & RECEIPT VERIFICATION -->
+    <div id="participantDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-5 bg-emerald-700 text-white flex items-center justify-between">
+                <h3 class="font-extrabold text-base">پرونده دانشجو و بررسی فیش واریزی</h3>
+                <button onclick="closeParticipantDetailModal()" class="w-8 h-8 rounded-lg hover:bg-white/10 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="participantDetailBody" class="p-6 overflow-y-auto space-y-4 text-sm"></div>
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap justify-between items-center gap-2">
+                <button id="modalViewTicketBtn" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold">
+                    <i class="fa-solid fa-ticket ml-1"></i>مشاهده صفحه دانشجو
+                </button>
+                <button onclick="closeParticipantDetailModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 text-xs font-bold">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: GOOGLE SHEETS & DEPLOYMENT GUIDE -->
+    <div id="deployGuideModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-5 bg-gradient-to-l from-emerald-800 to-teal-700 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-cloud-bolt text-emerald-200 text-lg"></i>
+                    <h3 class="font-extrabold text-sm sm:text-base">آموزش گام‌به‌گام اتصال به گوگل‌شیت و انتشار رایگان سایت</h3>
+                </div>
+                <button onclick="closeDeployGuideModal()" class="w-8 h-8 rounded-lg hover:bg-white/10 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <div class="space-y-3">
+                    <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-bold leading-relaxed">
+                        <i class="fa-solid fa-circle-check text-emerald-600 ml-1"></i>
+                        <strong>نسخه جدید اسکریپت (بدون محدودیت حجم فیش):</strong> در این کد، تصویر فیش‌های واریزی هم به‌صورت <strong>فایل عکس در پوشه Google Drive</strong> شما ذخیره می‌شود، هم لینک و تصویر آن مستقیماً داخل <strong>ستون‌های Google Sheets</strong> قرار می‌گیرد تا در پنل برگزارکننده همیشه نمایش داده شود.
+                    </div>
+
+                    <div class="flex items-center gap-2 text-emerald-800 font-black text-base">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center text-sm">۱</span>
+                        <h4>روش اتصال سایت به Google Sheets و ذخیره دائمی فیش‌ها</h4>
+                    </div>
+                    <ol class="list-decimal pr-5 space-y-2">
+                        <li>وارد سایت <strong>sheets.google.com</strong> شوید و یک فایل جدید (Blank Spreadsheet) بسازید.</li>
+                        <li>از منوی بالا روی <strong>Extensions</strong> و سپس <strong>Apps Script</strong> کلیک کنید.</li>
+                        <li>کدهای قبلی را کاملاً پاک کرده و کد جدید زیر را کپی و جایگذاری کنید:</li>
+                    </ol>
+
+                    <div class="bg-slate-900 text-slate-100 rounded-2xl p-4 space-y-2">
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+                            <span class="text-xs font-mono text-emerald-400">Google Apps Script (Code.gs) - نسخه پشتیبان فیش تصویری</span>
+                            <button type="button" onclick="copyGoogleAppsScriptCode()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>کپی کردن کد گوگل‌شیت</span>
+                            </button>
+                        </div>
+                        <pre id="gasCodeBlock" class="text-[11px] font-mono text-left dir-ltr overflow-x-auto text-emerald-200 max-h-44">const HEADERS = ['id', 'trackingCode', 'fullName', 'major', 'entryYear', 'studentId', 'nationalId', 'mobile', 'emergencyPhone', 'lotteryStatus', 'reserveRank', 'paymentStatus', 'paidAmount', 'receiptRef', 'receiptName', 'createdAt', 'driveLink', 'receiptDataUrl'];
+
+function getOrCreateSheet() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getActiveSheet();
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(HEADERS);
+  }
+  return sheet;
+}
+
+function readAllFromSheet() {
+  var sheet = getOrCreateSheet();
+  var data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+  var list = [];
+  for (var r = 1; r < data.length; r++) {
+    var row = data[r];
+    if (!row[0] && !row[1]) continue;
+    list.push({
+      id: String(row[0] || ''),
+      trackingCode: String(row[1] || ''),
+      fullName: String(row[2] || ''),
+      major: String(row[3] || ''),
+      entryYear: String(row[4] || ''),
+      studentId: String(row[5] || ''),
+      nationalId: String(row[6] || ''),
+      mobile: String(row[7] || ''),
+      emergencyPhone: String(row[8] || ''),
+      lotteryStatus: String(row[9] || 'در انتظار قرعه‌کشی'),
+      reserveRank: row[10] === '-' || row[10] === '' ? null : Number(row[10]),
+      paymentStatus: String(row[11] || 'پس از قرعه‌کشی'),
+      paidAmount: Number(row[12] || 0),
+      receiptRef: String(row[13] || ''),
+      receiptName: String(row[14] || ''),
+      createdAt: String(row[15] || ''),
+      driveLink: String(row[16] || ''),
+      receiptDataUrl: String(row[17] || '')
+    });
+  }
+  return list;
+}
+
+function saveReceiptToDriveIfPossible(reg) {
+  try {
+    if (!reg.receiptDataUrl || reg.receiptDataUrl.indexOf('base64,') === -1) return reg.driveLink || '';
+    var folders = DriveApp.getFoldersByName('Pishran_Arak_Receipts');
+    var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder('Pishran_Arak_Receipts');
+    var base64Data = reg.receiptDataUrl.split('base64,')[1];
+    var blob = Utilities.newBlob(Utilities.base64Decode(base64Data), 'image/jpeg', (reg.studentId || reg.trackingCode) + '_' + (reg.fullName || 'receipt') + '.jpg');
+    var file = folder.createFile(blob);
+    return file.getUrl();
+  } catch (err) {
+    return reg.driveLink || '';
+  }
+}
+
+function writeAllToSheet(list) {
+  var sheet = getOrCreateSheet();
+  sheet.clearContents();
+  sheet.appendRow(HEADERS);
+  var rows = list.map(function(r) {
+    return [
+      r.id || '', r.trackingCode || '', r.fullName || '', r.major || '', r.entryYear || '',
+      r.studentId || '', r.nationalId || '', r.mobile || '', r.emergencyPhone || '',
+      r.lotteryStatus || '', r.reserveRank || '-', r.paymentStatus || '', r.paidAmount || 0,
+      r.receiptRef || '', r.receiptName || '', r.createdAt || '', r.driveLink || '', r.receiptDataUrl || ''
+    ];
+  });
+  if (rows.length > 0) {
+    sheet.getRange(2, 1, rows.length, HEADERS.length).setValues(rows);
+  }
+}
+
+function doGet() {
+  var list = readAllFromSheet();
+  return ContentService.createTextOutput(JSON.stringify(list)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    var body = JSON.parse(e.postData.contents);
+    var list = readAllFromSheet();
+
+    if (body.action === 'REGISTER' && body.payload) {
+      list.unshift(body.payload);
+    } else if (body.action === 'UPLOAD_RECEIPT' && body.payload) {
+      var p = body.payload;
+      p.driveLink = saveReceiptToDriveIfPossible(p);
+      var found = false;
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].id === p.id || list[i].trackingCode === p.trackingCode || list[i].studentId === p.studentId) {
+          list[i].paymentStatus = p.paymentStatus;
+          list[i].paidAmount = p.paidAmount;
+          list[i].receiptName = p.receiptName;
+          list[i].receiptRef = p.receiptRef || '';
+          list[i].receiptDataUrl = p.receiptDataUrl || list[i].receiptDataUrl || '';
+          list[i].driveLink = p.driveLink || list[i].driveLink || '';
+          found = true;
+          break;
+        }
+      }
+      if (!found) list.unshift(p);
+    } else if (body.allRegistrations) {
+      var oldMap = {};
+      list.forEach(function(item) { oldMap[item.id] = item; });
+      list = body.allRegistrations.map(function(item) {
+        var prev = oldMap[item.id] || {};
+        if (!item.receiptDataUrl && prev.receiptDataUrl) item.receiptDataUrl = prev.receiptDataUrl;
+        if (!item.driveLink && prev.driveLink) item.driveLink = prev.driveLink;
+        return item;
+      });
+    }
+
+    writeAllToSheet(list);
+    return ContentService.createTextOutput(JSON.stringify({status: 'ok'})).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}</pre>
+                    </div>
+
+                    <ol start="4" class="list-decimal pr-5 space-y-2">
+                        <li>روی آیکون ذخیره (Save) کلیک کنید، سپس از بالا سمت راست روی <strong>Deploy -> Manage deployments -> Edit (آیکون مداد) -> New version -> Deploy</strong> (یا برای بار اول روی <strong>New deployment</strong>) کلیک کنید.</li>
+                        <li>نوع را روی <strong>Web app</strong> و گزینه <strong>Who has access</strong> را روی <code>Anyone</code> قرار دهید و Deploy را بزنید.</li>
+                        <li>لینک <strong>Web App URL</strong> را کپی کرده و در بخش «تنظیمات» پنل برگزارکننده قرار دهید.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+                <button onclick="closeDeployGuideModal()" class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-extrabold">متوجه شدم</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: FULL-SCREEN RECEIPT LIGHTBOX & DOWNLOAD -->
+    <div id="receiptLightboxModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 no-print" onclick="closeReceiptLightbox()">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 animate-fade-in" onclick="event.stopPropagation()">
+            <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-receipt text-emerald-400"></i>
+                    <h4 id="lightboxTitle" class="font-extrabold text-sm">پیش‌نمایش تصویر فیش واریزی</h4>
+                </div>
+                <button type="button" onclick="closeReceiptLightbox()" class="w-8 h-8 rounded-lg hover:bg-white/15 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 bg-slate-100 flex flex-col items-center justify-center max-h-[70vh] overflow-y-auto">
+                <img id="lightboxImg" src="" alt="تصویر کامل فیش" class="max-w-full max-h-[60vh] object-contain rounded-2xl shadow-md border border-white">
+            </div>
+            <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3">
+                <span id="lightboxMetaText" class="text-xs font-mono text-slate-500">مبلغ: ۱۰۰,۰۰۰ تومان</span>
+                <div class="flex items-center gap-2">
+                    <button type="button" id="lightboxDownloadBtn" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-download"></i>
+                        <span>دانلود تصویر فیش (JPG)</span>
+                    </button>
+                    <button type="button" onclick="closeReceiptLightbox()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
+                        بستن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- APPLICATION JAVASCRIPT                                  -->
+    <!-- ======================================================= -->
+    <script>
+        /*
+         * لینک Web App گوگل‌شیت خود را در متغیر زیر قرار دهید تا روی تمام دستگاه‌ها همگام‌سازی شود:
+         */
+        const DEFAULT_CLOUD_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxkc8Vq-WM-odiObrxqCwh_UCx0_a4drkeRqaaqX9qARmlodm1hxG6LXj5ahrcnJ21v7g/exec';
+
+        const STORAGE_KEY_REGS = 'pishran_msa_registrations_v4';
+        const STORAGE_KEY_CONFIG = 'pishran_msa_config_v4';
+        const STORAGE_KEY_RECEIPTS = 'pishran_msa_receipts_vault_v4';
+
+        const defaultConfig = {
+            title: 'اردوی بازدید از کارخانه ماشین‌سازی اراک',
+            date: '۲۹ مهرماه ۱۴۰۵',
+            fee: 100000,
+            studentQuota: 20,
+            bankCard: '6219-8618-1724-1812',
+            adminPassword: 'pishran1405',
+            cloudUrl: DEFAULT_CLOUD_WEB_APP_URL
+        };
+
+        let campConfig = {};
+        let registrations = [];
+        let receiptsVault = {};
+        let uploadedReceiptData = null;
+        let currentViewedRegId = null;
+        let isAdminAuthenticated = false;
+
+        function loadReceiptsVault() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY_RECEIPTS);
+                receiptsVault = raw ? JSON.parse(raw) : {};
+            } catch (e) {
+                receiptsVault = {};
+            }
+        }
+
+        function saveToReceiptsVault(reg) {
+            if (!reg || !reg.receiptDataUrl) return;
+            loadReceiptsVault();
+            const entry = {
+                receiptDataUrl: reg.receiptDataUrl,
+                receiptName: reg.receiptName || 'receipt.jpg',
+                receiptRef: reg.receiptRef || '',
+                paidAmount: reg.paidAmount || 100000,
+                paymentStatus: reg.paymentStatus || 'بررسی فیش',
+                updatedAt: Date.now()
+            };
+            if (reg.id) receiptsVault[reg.id] = entry;
+            if (reg.studentId) receiptsVault['STU_' + reg.studentId] = entry;
+            if (reg.trackingCode) receiptsVault['TRK_' + reg.trackingCode] = entry;
+            try {
+                localStorage.setItem(STORAGE_KEY_RECEIPTS, JSON.stringify(receiptsVault));
+            } catch (err) {
+                console.warn('Receipt vault quota warning:', err);
+            }
+        }
+
+        function mergeVaultWithRegistrations(list) {
+            loadReceiptsVault();
+            return (list || []).map(reg => {
+                const vaultEntry = receiptsVault[reg.id] || receiptsVault['STU_' + reg.studentId] || receiptsVault['TRK_' + reg.trackingCode];
+                if (vaultEntry) {
+                    if (!reg.receiptDataUrl && vaultEntry.receiptDataUrl) {
+                        reg.receiptDataUrl = vaultEntry.receiptDataUrl;
+                    }
+                    if (!reg.receiptName && vaultEntry.receiptName) {
+                        reg.receiptName = vaultEntry.receiptName;
+                    }
+                    if (!reg.receiptRef && vaultEntry.receiptRef) {
+                        reg.receiptRef = vaultEntry.receiptRef;
+                    }
+                    if ((reg.paymentStatus === 'در انتظار واریز وجه' || reg.paymentStatus === 'پس از قرعه‌کشی') && vaultEntry.receiptDataUrl) {
+                        reg.paymentStatus = vaultEntry.paymentStatus || 'بررسی فیش';
+                        reg.paidAmount = vaultEntry.paidAmount || 100000;
+                    }
+                } else if (reg.receiptDataUrl) {
+                    saveToReceiptsVault(reg);
+                }
+                return reg;
+            });
+        }
+
+        function persistRegistrationsLocally() {
+            registrations = mergeVaultWithRegistrations(registrations);
+            try {
+                localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            } catch (err) {
+                console.warn('LocalStorage quota warning:', err);
+            }
+        }
+
+        function toEnglishDigits(str) {
+            if (!str) return '';
+            const persian = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+            const arabic  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+            let res = String(str);
+            for (let i = 0; i < 10; i++) {
+                res = res.replace(persian[i], i).replace(arabic[i], i);
+            }
+            return res.trim();
+        }
+
+        function formatPersianCurrency(num) {
+            return Number(num || 0).toLocaleString('fa-IR');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const styles = {
+                success: 'bg-emerald-950 text-white border-emerald-400',
+                error: 'bg-rose-950 text-white border-rose-400',
+                info: 'bg-slate-900 text-white border-teal-400'
+            };
+            const icons = {
+                success: 'fa-circle-check text-emerald-300',
+                error: 'fa-circle-exclamation text-rose-300',
+                info: 'fa-circle-info text-teal-300'
+            };
+
+            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3.5 rounded-2xl shadow-xl border-r-4 ${styles[type]} transition-all duration-300`;
+            toast.innerHTML = `
+                <i class="fa-solid ${icons[type]} text-lg shrink-0"></i>
+                <span class="text-xs sm:text-sm font-bold leading-snug">${message}</span>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3800);
+        }
+
+        async function initApp() {
+            loadReceiptsVault();
+            const savedCfg = localStorage.getItem(STORAGE_KEY_CONFIG);
+            if (savedCfg) {
+                try {
+                    campConfig = { ...defaultConfig, ...JSON.parse(savedCfg) };
+                    if (DEFAULT_CLOUD_WEB_APP_URL) campConfig.cloudUrl = DEFAULT_CLOUD_WEB_APP_URL;
+                } catch (e) {
+                    campConfig = { ...defaultConfig };
+                }
+            } else {
+                campConfig = { ...defaultConfig };
+                localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(campConfig));
+            }
+
+            const savedRegs = localStorage.getItem(STORAGE_KEY_REGS);
+            if (savedRegs) {
+                try {
+                    registrations = mergeVaultWithRegistrations(JSON.parse(savedRegs));
+                } catch (e) {
+                    registrations = [];
+                }
+            } else {
+                registrations = [];
+            }
+            persistRegistrationsLocally();
+
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+
+            if (campConfig.cloudUrl) {
+                await syncFromCloud(false);
+            }
+        }
+
+        async function syncFromCloud(showMessage = false) {
+            const badge = document.getElementById('cloudSyncBadge');
+            if (!campConfig.cloudUrl) {
+                if (badge) {
+                    badge.textContent = 'ذخیره محلی در مرورگر (فعال)';
+                    badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200';
+                }
+                if (showMessage) {
+                    showToast('تمامی فیش‌ها در حافظه مرورگر ذخیره هستند. برای اتصال به گوگل‌شیت، لینک وب‌هوک را در تنظیمات وارد کنید.', 'info');
+                }
+                return;
+            }
+
+            try {
+                if (badge) badge.textContent = 'در حال همگام‌سازی آنلاین...';
+                const res = await fetch(campConfig.cloudUrl);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data)) {
+                        // حفظ فیش‌های ذخیره‌شده محلی در صورت خالی بودن در سرور قدیمی
+                        const localMap = new Map(registrations.map(item => [item.id, item]));
+                        registrations = mergeVaultWithRegistrations(data.map(remoteItem => {
+                            const localItem = localMap.get(remoteItem.id);
+                            if (localItem && localItem.receiptDataUrl && !remoteItem.receiptDataUrl) {
+                                remoteItem.receiptDataUrl = localItem.receiptDataUrl;
+                                remoteItem.receiptName = remoteItem.receiptName || localItem.receiptName;
+                                remoteItem.receiptRef = remoteItem.receiptRef || localItem.receiptRef;
+                            }
+                            return remoteItem;
+                        }));
+                        persistRegistrationsLocally();
+                        updateHeroAndCapacityStats();
+                        renderAdminTable();
+                        if (currentViewedRegId) {
+                            const updated = registrations.find(r => r.id === currentViewedRegId);
+                            if (updated) populateDigitalTicket(updated);
+                        }
+                        if (badge) {
+                            badge.textContent = 'متصل به گوگل‌شیت آنلاین';
+                            badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300';
+                        }
+                        if (showMessage) showToast('اطلاعات و فیش‌ها با موفقیت همگام‌سازی شد.', 'success');
+                    }
+                }
+            } catch (err) {
+                if (badge) badge.textContent = 'حالت آفلاین (ذخیره محلی فیش‌ها فعال)';
+                if (showMessage) showToast('در حال حاضر اطلاعات و فیش‌ها از حافظه محلی خوانده می‌شوند.', 'info');
+            }
+        }
+
+        async function pushToCloud(action, payload) {
+            if (!campConfig.cloudUrl) return;
+            try {
+                await fetch(campConfig.cloudUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action, payload, allRegistrations: registrations })
+                });
+            } catch (err) {
+                console.error('Cloud sync error:', err);
+            }
+        }
+
+        function updateHeroAndCapacityStats() {
+            const stuQuota = Number(campConfig.studentQuota) || 20;
+            const totalApplicants = registrations.length;
+            const lotteryWinners = registrations.filter(r => r.lotteryStatus === 'منتخب قرعه‌کشی');
+            const waitingList = registrations.filter(r => r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو');
+            const verifiedPayments = registrations.filter(r => r.paymentStatus === 'تایید شده');
+
+            document.getElementById('studentLotteryQuotaText').textContent = stuQuota.toLocaleString('fa-IR');
+            document.getElementById('totalApplicantsCount').textContent = totalApplicants.toLocaleString('fa-IR');
+            document.getElementById('waitingListCountHero').textContent = waitingList.length.toLocaleString('fa-IR');
+            document.getElementById('selectedWinnersCount').textContent = lotteryWinners.length.toLocaleString('fa-IR');
+            document.getElementById('verifiedPaymentsCountHero').textContent = verifiedPayments.length.toLocaleString('fa-IR');
+
+            const barPercent = Math.min(100, Math.round((lotteryWinners.length / stuQuota) * 100));
+            document.getElementById('lotterySelectedBar').style.width = `${Math.max(8, barPercent)}%`;
+
+            const badge = document.getElementById('capacityStatusBadge');
+            if (lotteryWinners.length > 0) {
+                badge.textContent = 'نتایج قرعه‌کشی اعلام شد';
+                badge.className = 'text-[11px] font-extrabold px-3 py-1 rounded-full bg-amber-400/30 text-amber-100 border border-amber-300/40';
+            } else {
+                badge.textContent = 'ثبت‌نام اولیه باز است';
+                badge.className = 'text-[11px] font-extrabold px-3 py-1 rounded-full bg-emerald-400/25 text-emerald-100 border border-emerald-300/30';
+            }
+
+            document.getElementById('bankCardNumber').textContent = campConfig.bankCard;
+        }
+
+        function switchTab(tabName) {
+            ['register', 'track', 'admin'].forEach(t => {
+                const section = document.getElementById(`tabContent-${t}`);
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === tabName) {
+                    section.classList.remove('hidden');
+                    btn.className = 'tab-btn flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-gradient-to-l from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/20';
+                } else {
+                    section.classList.add('hidden');
+                    btn.className = 'tab-btn flex-1 md:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all';
+                }
+            });
+
+            if (tabName === 'admin') {
+                updateAdminLockUI();
+                if (isAdminAuthenticated) renderAdminTable();
+            }
+        }
+
+        function updateAdminLockUI() {
+            const lockScreen = document.getElementById('adminLockScreen');
+            const dashboard = document.getElementById('adminUnlockedDashboard');
+            const lockIcon = document.getElementById('adminLockIcon');
+
+            if (isAdminAuthenticated) {
+                lockScreen.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                lockIcon.className = 'fa-solid fa-unlock text-emerald-500';
+            } else {
+                lockScreen.classList.remove('hidden');
+                dashboard.classList.add('hidden');
+                lockIcon.className = 'fa-solid fa-lock text-emerald-600';
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const inputPass = document.getElementById('adminPasswordInput').value.trim();
+            const errEl = document.getElementById('adminLoginError');
+
+            if (inputPass === campConfig.adminPassword) {
+                isAdminAuthenticated = true;
+                errEl.classList.add('hidden');
+                document.getElementById('adminPasswordInput').value = '';
+                updateAdminLockUI();
+                renderAdminTable();
+                showToast('خوش آمدید! پنل برگزارکننده پایگاه پیشران باز شد.', 'success');
+            } else {
+                errEl.classList.remove('hidden');
+                showToast('رمز عبور وارد شده اشتباه است.', 'error');
+            }
+        }
+
+        function lockAdminPanel() {
+            isAdminAuthenticated = false;
+            updateAdminLockUI();
+            showToast('پنل برگزارکننده با موفقیت قفل شد.', 'info');
+        }
+
+        function handleReceiptUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) {
+                showToast('لطفاً فقط فایل تصویری (عکس یا اسکرین‌شات فیش) انتخاب کنید.', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    // ابعاد بهینه برای خوانایی کامل اعداد فیش و جا شدن تضمینی در سلول گوگل‌شیت (کمتر از 40 هزار کاراکتر)
+                    const maxDim = 560;
+                    let w = img.width;
+                    let h = img.height;
+                    if (w > maxDim || h > maxDim) {
+                        if (w > h) { h = Math.round(h * (maxDim / w)); w = maxDim; }
+                        else { w = Math.round(w * (maxDim / h)); h = maxDim; }
+                    }
+                    canvas.width = w;
+                    canvas.height = h;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.drawImage(img, 0, 0, w, h);
+
+                    let quality = 0.65;
+                    let compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    while (compressedDataUrl.length > 42000 && quality > 0.35) {
+                        quality -= 0.1;
+                        compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    }
+
+                    const sizeKb = Math.max(1, Math.round((compressedDataUrl.length * 0.75) / 1024));
+                    uploadedReceiptData = {
+                        name: file.name.replace(/\.[^/.]+$/, '') + '.jpg',
+                        size: `${sizeKb} KB (بهینه‌شده جهت ذخیره دائمی)`,
+                        dataUrl: compressedDataUrl
+                    };
+                    showReceiptPreview(uploadedReceiptData.name, uploadedReceiptData.size, uploadedReceiptData.dataUrl);
+                    showToast('تصویر فیش آماده ثبت شد؛ اکنون دکمه «ارسال رسید واریزی» را بزنید.', 'info');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function previewReceiptFull(src, titleText = 'تصویر فیش واریزی', metaText = 'مبلغ واریزی: ۱۰۰,۰۰۰ تومان', downloadName = 'receipt_pishran.jpg') {
+            if (!src) {
+                showToast('تصویر فیشی برای نمایش وجود ندارد.', 'error');
+                return;
+            }
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxTitle').textContent = titleText;
+            document.getElementById('lightboxMetaText').textContent = metaText;
+            const dlBtn = document.getElementById('lightboxDownloadBtn');
+            dlBtn.onclick = function() {
+                downloadReceiptDataUrl(src, downloadName);
+            };
+            const modal = document.getElementById('receiptLightboxModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeReceiptLightbox() {
+            const modal = document.getElementById('receiptLightboxModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function downloadReceiptDataUrl(dataUrl, filename) {
+            if (!dataUrl) {
+                showToast('فایل فیش برای دانلود یافت نشد.', 'error');
+                return;
+            }
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = filename || 'pishran_receipt.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('فایل تصویر فیش با موفقیت دانلود شد.', 'success');
+        }
+
+        function downloadReceiptById(regId) {
+            const r = registrations.find(item => item.id === regId);
+            if (!r || !r.receiptDataUrl) {
+                showToast('تصویر فیشی برای این دانشجو ثبت نشده است.', 'error');
+                return;
+            }
+            const cleanName = (r.fullName || 'student').replace(/\s+/g, '_');
+            downloadReceiptDataUrl(r.receiptDataUrl, `فیش_${cleanName}_${r.studentId}.jpg`);
+        }
+
+        function downloadCurrentStudentReceipt() {
+            if (!currentViewedRegId) return;
+            downloadReceiptById(currentViewedRegId);
+        }
+
+        function previewReceiptById(regId) {
+            const r = registrations.find(item => item.id === regId);
+            if (!r || !r.receiptDataUrl) {
+                showToast('تصویر فیشی برای این دانشجو یافت نشد.', 'error');
+                return;
+            }
+            const cleanName = (r.fullName || 'student').replace(/\s+/g, '_');
+            previewReceiptFull(
+                r.receiptDataUrl,
+                `فیش واریزی: ${r.fullName} (${r.studentId})`,
+                `کد پیگیری: ${r.receiptRef || 'ثبت نشده'} | وضعیت: ${r.paymentStatus}`,
+                `فیش_${cleanName}_${r.studentId}.jpg`
+            );
+        }
+
+        function showReceiptPreview(name, sizeText, imgSrc) {
+            document.getElementById('receiptEmptyState').classList.add('hidden');
+            const box = document.getElementById('receiptPreviewContainer');
+            box.classList.remove('hidden');
+            box.classList.add('flex');
+            document.getElementById('receiptPreviewImg').src = imgSrc;
+            document.getElementById('receiptFileName').textContent = name;
+            document.getElementById('receiptFileSize').textContent = sizeText;
+            hideError('receipt');
+        }
+
+        function clearReceiptUpload(event) {
+            if (event) event.stopPropagation();
+            uploadedReceiptData = null;
+            const fileInput = document.getElementById('receiptFile');
+            if (fileInput) fileInput.value = '';
+            const emptyEl = document.getElementById('receiptEmptyState');
+            if (emptyEl) emptyEl.classList.remove('hidden');
+            const box = document.getElementById('receiptPreviewContainer');
+            if (box) {
+                box.classList.add('hidden');
+                box.classList.remove('flex');
+            }
+        }
+
+        function showError(id, msg) {
+            const el = document.getElementById(`err-${id}`);
+            if (el) {
+                el.textContent = msg;
+                el.classList.remove('hidden');
+            }
+        }
+        function hideError(id) {
+            const el = document.getElementById(`err-${id}`);
+            if (el) el.classList.add('hidden');
+        }
+        function clearAllErrors() {
+            ['fullName', 'nationalId', 'studentId', 'mobile', 'emergencyPhone', 'receipt', 'terms'].forEach(hideError);
+        }
+
+        document.getElementById('campRegistrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            clearAllErrors();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const nationalId = toEnglishDigits(document.getElementById('nationalId').value);
+            const studentId = toEnglishDigits(document.getElementById('studentId').value);
+            const major = document.getElementById('major').value;
+            const entryYear = document.getElementById('entryYear').value;
+            const mobile = toEnglishDigits(document.getElementById('mobile').value);
+            const emergencyPhone = toEnglishDigits(document.getElementById('emergencyPhone').value);
+            const sbuMechChecked = document.getElementById('sbuMechCheck').checked;
+            const termsChecked = document.getElementById('termsCheck').checked;
+
+            let valid = true;
+
+            if (fullName.length < 3) {
+                showError('fullName', 'نام و نام خانوادگی کامل خود را وارد کنید.');
+                valid = false;
+            }
+            if (!/^\d{10}$/.test(nationalId)) {
+                showError('nationalId', 'کد ملی باید دقیقاً ۱۰ رقم باشد.');
+                valid = false;
+            } else if (registrations.some(r => r.nationalId === nationalId)) {
+                showError('nationalId', 'این کد ملی قبلاً ثبت‌نام شده است! از تب «نتیجه قرعه‌کشی و ارسال رسید» استفاده کنید.');
+                valid = false;
+            }
+
+            if (studentId.length < 6) {
+                showError('studentId', 'شماره دانشجویی معتبر دانشگاه شهید بهشتی را وارد نمایید.');
+                valid = false;
+            } else if (registrations.some(r => r.studentId === studentId)) {
+                showError('studentId', 'این شماره دانشجویی قبلاً ثبت‌نام شده است.');
+                valid = false;
+            }
+
+            if (!/^09\d{9}$/.test(mobile)) {
+                showError('mobile', 'شماره موبایل ۱۱ رقمی معتبر وارد کنید.');
+                valid = false;
+            }
+            if (!/^0\d{9,10}$/.test(emergencyPhone)) {
+                showError('emergencyPhone', 'شماره تماس اضطراری معتبر وارد کنید.');
+                valid = false;
+            }
+            if (!sbuMechChecked || !termsChecked) {
+                showError('terms', 'تایید دانشجو بودن در دانشکده و پذیرش قوانین الزامی است.');
+                valid = false;
+            }
+
+            if (!valid) {
+                showToast('لطفاً موارد مشخص‌شده در فرم را تکمیل نمایید.', 'error');
+                return;
+            }
+
+            const trackingCode = 'CAMP-' + Math.floor(100000 + Math.random() * 900000);
+            const nowFa = new Intl.DateTimeFormat('fa-IR', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+
+            const newRecord = {
+                id: 'stu-' + Date.now(),
+                trackingCode,
+                fullName,
+                nationalId,
+                studentId,
+                major,
+                entryYear,
+                mobile,
+                emergencyPhone,
+                paidAmount: 0,
+                receiptName: '',
+                receiptRef: '',
+                receiptDataUrl: '',
+                lotteryStatus: 'در انتظار قرعه‌کشی',
+                reserveRank: null,
+                paymentStatus: 'پس از قرعه‌کشی',
+                createdAt: nowFa
+            };
+
+            registrations.unshift(newRecord);
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('REGISTER', newRecord);
+
+            updateHeroAndCapacityStats();
+            if (isAdminAuthenticated) renderAdminTable();
+
+            document.getElementById('campRegistrationForm').reset();
+            switchTab('track');
+            document.getElementById('trackQueryInput').value = newRecord.studentId;
+            populateDigitalTicket(newRecord);
+            document.getElementById('digitalTicketSection').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast(`ثبت‌نام اولیه شما با موفقیت انجام شد! کد رهگیری: ${trackingCode}`, 'success');
+        });
+
+        function renderStudentStepper(reg) {
+            const isWinner = reg.lotteryStatus === 'منتخب قرعه‌کشی';
+            const isWaitingList = reg.lotteryStatus === 'لیست انتظار' || reg.lotteryStatus === 'لیست رزرو';
+            const hasUploaded = reg.paymentStatus === 'بررسی فیش' || reg.paymentStatus === 'تایید شده';
+            const isVerified = reg.paymentStatus === 'تایید شده';
+            const isRejected = reg.paymentStatus === 'رد شده';
+
+            const overallBadge = document.getElementById('stepperOverallBadge');
+            if (isVerified) {
+                overallBadge.textContent = 'ثبت‌نام قطعی و تایید شده';
+                overallBadge.className = 'text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200';
+            } else if (isWinner && hasUploaded) {
+                overallBadge.textContent = 'فیش ارسال شده (در حال بررسی)';
+                overallBadge.className = 'text-xs font-extrabold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200';
+            } else if (isWinner) {
+                overallBadge.textContent = 'برگزیده قرعه‌کشی — منتظر آپلود فیش';
+                overallBadge.className = 'text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-600 text-white';
+            } else if (isWaitingList) {
+                overallBadge.textContent = `لیست انتظار (اولویت ${reg.reserveRank ? reg.reserveRank.toLocaleString('fa-IR') : 'رزرو'})`;
+                overallBadge.className = 'text-xs font-extrabold px-3 py-1 rounded-full bg-purple-100 text-purple-800 border border-purple-200';
+            } else {
+                overallBadge.textContent = 'در انتظار قرعه‌کشی';
+                overallBadge.className = 'text-xs font-extrabold px-3 py-1 rounded-full bg-slate-100 text-slate-700';
+            }
+
+            const steps = [
+                {
+                    num: '۱',
+                    title: 'ثبت‌نام اولیه',
+                    sub: 'ثبت مشخصات (رایگان)',
+                    state: 'done'
+                },
+                {
+                    num: '۲',
+                    title: 'نتیجه قرعه‌کشی',
+                    sub: isWinner ? 'برگزیده اصلی (۲۰ نفر)' : (isWaitingList ? `لیست انتظار (نوبت ${reg.reserveRank || '-'})` : 'در انتظار قرعه‌کشی'),
+                    state: isWinner ? 'done' : (isWaitingList ? 'waiting' : 'active')
+                },
+                {
+                    num: '۳',
+                    title: 'ارسال رسید واریز',
+                    sub: hasUploaded ? 'تصویر فیش ارسال شد' : (isRejected ? 'نیاز به ارسال مجدد' : (isWinner ? 'درگاه آپلود باز است' : 'قفل (ویژه برگزیدگان)')),
+                    state: hasUploaded ? 'done' : (isWinner ? 'active' : 'locked')
+                },
+                {
+                    num: '۴',
+                    title: 'تایید واریز و کارت',
+                    sub: isVerified ? 'واریز تایید شد (قطعی)' : (hasUploaded ? 'در انتظار تایید برگزارکننده' : 'پس از بررسی فیش'),
+                    state: isVerified ? 'done' : (hasUploaded ? 'active' : 'locked')
+                }
+            ];
+
+            const styleMap = {
+                done: 'bg-emerald-50 border-emerald-300 text-emerald-900',
+                active: 'bg-amber-50 border-amber-300 text-amber-950 ring-2 ring-amber-400/30',
+                waiting: 'bg-purple-50 border-purple-300 text-purple-950',
+                locked: 'bg-slate-50 border-slate-200 text-slate-400'
+            };
+
+            const badgeMap = {
+                done: 'bg-emerald-600 text-white',
+                active: 'bg-amber-500 text-white',
+                waiting: 'bg-purple-600 text-white',
+                locked: 'bg-slate-200 text-slate-500'
+            };
+
+            document.getElementById('studentProgressStepper').innerHTML = steps.map(s => `
+                <div class="p-3 rounded-2xl border ${styleMap[s.state]} flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-xl ${badgeMap[s.state]} font-black text-xs flex items-center justify-center shrink-0">
+                        ${s.state === 'done' ? '<i class="fa-solid fa-check"></i>' : s.num}
+                    </span>
+                    <div class="min-w-0">
+                        <p class="text-xs font-black truncate">${s.title}</p>
+                        <p class="text-[11px] opacity-80 truncate mt-0.5">${s.sub}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateDigitalTicket(reg) {
+            currentViewedRegId = reg.id;
+            clearReceiptUpload();
+
+            renderStudentStepper(reg);
+
+            document.getElementById('ticketTrackingCode').textContent = reg.trackingCode;
+            document.getElementById('ticketFullName').textContent = reg.fullName;
+            document.getElementById('ticketStudentId').textContent = reg.studentId;
+            document.getElementById('ticketNationalId').textContent = reg.nationalId;
+            document.getElementById('ticketMobile').textContent = reg.mobile;
+            document.getElementById('ticketMajor').textContent = reg.major || 'مهندسی مکانیک';
+            document.getElementById('ticketEntryYear').textContent = reg.entryYear;
+
+            const waitingEl = document.getElementById('stateWaitingLottery');
+            const reserveEl = document.getElementById('stateReserveLottery');
+            const winnerFormEl = document.getElementById('stateWinnerPaymentForm');
+            const winnerSubmittedEl = document.getElementById('stateWinnerReceiptSubmitted');
+            const rejectedAlert = document.getElementById('rejectedReceiptAlert');
+
+            [waitingEl, reserveEl, winnerFormEl, winnerSubmittedEl, rejectedAlert].forEach(el => el.classList.add('hidden'));
+
+            const badge = document.getElementById('ticketLotteryBadge');
+            const payBadge = document.getElementById('ticketPaymentBadge');
+            const hasUploadedReceipt = reg.paymentStatus === 'بررسی فیش' || reg.paymentStatus === 'تایید شده';
+
+            if (reg.lotteryStatus === 'منتخب قرعه‌کشی') {
+                badge.textContent = 'برگزیده نهایی قرعه‌کشی (ظرفیت ۲۰ نفر)';
+                badge.className = 'px-3.5 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200';
+
+                if (hasUploadedReceipt) {
+                    winnerSubmittedEl.classList.remove('hidden');
+                    const isVerified = reg.paymentStatus === 'تایید شده';
+
+                    winnerSubmittedEl.className = isVerified
+                        ? 'rounded-3xl p-6 border-2 bg-emerald-50/90 border-emerald-300 space-y-4'
+                        : 'rounded-3xl p-6 border-2 bg-amber-50/90 border-amber-300 space-y-4';
+
+                    document.getElementById('submittedReceiptIconBox').className = isVerified
+                        ? 'w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 text-xl shadow-md'
+                        : 'w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 text-xl shadow-md';
+
+                    document.getElementById('submittedStatusBadge').textContent = isVerified
+                        ? 'واریز تایید شده (ثبت‌نام قطعی)'
+                        : 'در حال بررسی فیش توسط پایگاه پیشران';
+                    document.getElementById('submittedStatusBadge').className = isVerified
+                        ? 'text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-emerald-200 text-emerald-900'
+                        : 'text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-amber-200 text-amber-900';
+
+                    document.getElementById('submittedReceiptRefText').textContent = reg.receiptRef ? `کد پیگیری: ${reg.receiptRef}` : '';
+
+                    document.getElementById('submittedReceiptTitle').textContent = isVerified
+                        ? 'تبریک! واریز شما تایید شد و ثبت‌نامتان در اردو قطعی است'
+                        : 'رسید پرداخت شما دریافت شد و در انتظار تایید برگزارکننده است';
+
+                    document.getElementById('submittedReceiptDesc').textContent = isVerified
+                        ? 'کارت دیجیتال زیر به عنوان مجوز حضور شما در روز حرکت (۲۹ مهرماه ۱۴۰۵ ساعت ۴:۳۰ صبح) معتبر می‌باشد.'
+                        : 'پس از بررسی فیش توسط کادر اجرایی پایگاه پیشران، وضعیت این کادر به «واریز تایید شده (قطعی)» تغییر خواهد کرد.';
+
+                    const thumbBox = document.getElementById('studentReceiptThumbBox');
+                    if (reg.receiptDataUrl) {
+                        thumbBox.classList.remove('hidden');
+                        document.getElementById('studentUploadedReceiptImg').src = reg.receiptDataUrl;
+                    } else {
+                        thumbBox.classList.add('hidden');
+                    }
+                } else {
+                    winnerFormEl.classList.remove('hidden');
+                    document.getElementById('receiptRefInput').value = reg.receiptRef || '';
+                    if (reg.paymentStatus === 'رد شده') {
+                        rejectedAlert.classList.remove('hidden');
+                        document.getElementById('winnerPaymentStatePill').textContent = 'وضعیت: فیش رد شده (نیاز به اصلاح)';
+                    } else {
+                        document.getElementById('winnerPaymentStatePill').textContent = 'وضعیت: در انتظار واریز وجه';
+                    }
+                }
+            } else if (reg.lotteryStatus === 'لیست انتظار' || reg.lotteryStatus === 'لیست رزرو') {
+                const rankTxt = reg.reserveRank ? `اولویت ${reg.reserveRank.toLocaleString('fa-IR')}` : 'رزرو';
+                badge.textContent = `لیست انتظار (${rankTxt})`;
+                badge.className = 'px-3.5 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-800 border border-purple-200';
+                document.getElementById('reserveRankBadge').textContent = `نوبت شما در لیست انتظار: نفر ${(reg.reserveRank || 1).toLocaleString('fa-IR')}`;
+                reserveEl.classList.remove('hidden');
+            } else {
+                badge.textContent = 'ثبت‌نام اولیه — در انتظار قرعه‌کشی ۲۰ نفره';
+                badge.className = 'px-3.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-200';
+                waitingEl.classList.remove('hidden');
+            }
+
+            payBadge.textContent = `وضعیت واریز: ${reg.paymentStatus}`;
+            payBadge.className = reg.paymentStatus === 'تایید شده'
+                ? 'text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800'
+                : (reg.paymentStatus === 'بررسی فیش'
+                    ? 'text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg bg-amber-100 text-amber-800'
+                    : 'text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600');
+
+            document.getElementById('ticketQrContainer').innerHTML = generateSvgQrCode(reg.trackingCode);
+        }
+
+        function reopenWinnerReceiptForm() {
+            const reg = registrations.find(r => r.id === currentViewedRegId);
+            if (reg && reg.receiptDataUrl) {
+                uploadedReceiptData = {
+                    name: reg.receiptName || 'receipt.jpg',
+                    size: 'تصویر قبلی ذخیره شده',
+                    dataUrl: reg.receiptDataUrl
+                };
+                showReceiptPreview(uploadedReceiptData.name, uploadedReceiptData.size, uploadedReceiptData.dataUrl);
+            }
+            if (reg && reg.receiptRef) {
+                document.getElementById('receiptRefInput').value = reg.receiptRef;
+            }
+            document.getElementById('stateWinnerReceiptSubmitted').classList.add('hidden');
+            document.getElementById('stateWinnerPaymentForm').classList.remove('hidden');
+        }
+
+        async function submitWinnerReceipt() {
+            hideError('receipt');
+            const refVal = toEnglishDigits(document.getElementById('receiptRefInput').value);
+
+            const idx = registrations.findIndex(r => r.id === currentViewedRegId);
+            if (idx === -1) {
+                showToast('خطا در شناسایی پرونده دانشجو؛ لطفاً مجدداً کد ملی یا شماره دانشجویی را جستجو کنید.', 'error');
+                return;
+            }
+
+            if (!refVal || refVal.length < 3) {
+                showError('receipt', 'لطفاً شماره پیگیری بانکی یا ۴ رقم آخر کارت واریزکننده را وارد نمایید.');
+                showToast('شماره پیگیری بانکی وارد نشده است.', 'error');
+                return;
+            }
+
+            const finalReceiptDataUrl = (uploadedReceiptData && uploadedReceiptData.dataUrl)
+                ? uploadedReceiptData.dataUrl
+                : (registrations[idx].receiptDataUrl || '');
+
+            if (!finalReceiptDataUrl) {
+                showError('receipt', 'لطفاً تصویر فیش واریزی ۱۰۰,۰۰۰ تومانی خود را انتخاب و بارگذاری کنید.');
+                showToast('تصویر فیش واریزی انتخاب نشده است.', 'error');
+                return;
+            }
+
+            registrations[idx].paidAmount = 100000;
+            registrations[idx].receiptRef = refVal;
+            registrations[idx].receiptName = (uploadedReceiptData && uploadedReceiptData.name) ? uploadedReceiptData.name : (registrations[idx].receiptName || 'receipt.jpg');
+            registrations[idx].receiptDataUrl = finalReceiptDataUrl;
+            registrations[idx].paymentStatus = 'بررسی فیش';
+
+            // ۱. ذخیره در صندوق دائمی فیش‌ها (Receipt Vault)
+            saveToReceiptsVault(registrations[idx]);
+            // ۲. ذخیره در لیست ثبت‌نام‌های مرورگر
+            persistRegistrationsLocally();
+            // ۳. ارسال به گوگل‌شیت و گوگل‌درایو (در صورت تنظیم لینک ابری)
+            await pushToCloud('UPLOAD_RECEIPT', registrations[idx]);
+
+            updateHeroAndCapacityStats();
+            populateDigitalTicket(registrations[idx]);
+            if (isAdminAuthenticated) renderAdminTable();
+            showToast('تصویر فیش و کد پیگیری با موفقیت ذخیره شد و در پنل برگزارکننده قابل مشاهده و دانلود است!', 'success');
+        }
+
+        function generateSvgQrCode(seedStr) {
+            let hash = 0;
+            for (let i = 0; i < seedStr.length; i++) {
+                hash = ((hash << 5) - hash) + seedStr.charCodeAt(i);
+                hash |= 0;
+            }
+            let cells = '';
+            const size = 7;
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    const isCorner = (r < 2 && c < 2) || (r < 2 && c >= size - 2) || (r >= size - 2 && c < 2);
+                    const bit = (Math.abs(hash + r * 13 + c * 7) % 3 !== 0) || isCorner;
+                    if (bit) {
+                        cells += `<rect x="${10 + c * 12}" y="${10 + r * 12}" width="10" height="10" rx="2" fill="#064e3b"/>`;
+                    }
+                }
+            }
+            return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 104" class="w-full h-full">
+                <rect width="104" height="104" rx="8" fill="#ffffff"/>
+                ${cells}
+            </svg>`;
+        }
+
+        function handleTrackSearch(e) {
+            if (e) e.preventDefault();
+            const q = toEnglishDigits(document.getElementById('trackQueryInput').value).toUpperCase();
+            if (!q) return;
+
+            const found = registrations.find(r =>
+                r.trackingCode.toUpperCase() === q ||
+                r.nationalId === q ||
+                r.studentId === q
+            );
+
+            if (!found) {
+                showToast('هیچ ثبت‌نامی با این شماره دانشجویی، کد ملی یا کد رهگیری یافت نشد.', 'error');
+                return;
+            }
+
+            switchTab('track');
+            populateDigitalTicket(found);
+            document.getElementById('digitalTicketSection').classList.remove('hidden');
+            showToast(`پرونده و وضعیت قرعه‌کشی «${found.fullName}» بارگذاری شد.`, 'success');
+        }
+
+        async function runSmartLottery() {
+            const stuQuota = Number(campConfig.studentQuota) || 20;
+
+            if (registrations.length === 0) {
+                showToast('هنوز هیچ دانشجویی در لیست ثبت‌نام نکرده است!', 'error');
+                return;
+            }
+
+            const shuffledIds = registrations.map(s => s.id);
+            for (let i = shuffledIds.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledIds[i], shuffledIds[j]] = [shuffledIds[j], shuffledIds[i]];
+            }
+
+            const winnerIds = shuffledIds.slice(0, stuQuota);
+            const waitingIds = shuffledIds.slice(stuQuota);
+            const winnerSet = new Set(winnerIds);
+            const waitingRankMap = new Map();
+            waitingIds.forEach((id, idx) => waitingRankMap.set(id, idx + 1));
+
+            registrations = registrations.map(reg => {
+                const alreadyPaid = reg.paymentStatus === 'بررسی فیش' || reg.paymentStatus === 'تایید شده';
+                if (winnerSet.has(reg.id)) {
+                    return {
+                        ...reg,
+                        lotteryStatus: 'منتخب قرعه‌کشی',
+                        reserveRank: null,
+                        paymentStatus: alreadyPaid ? reg.paymentStatus : 'در انتظار واریز وجه'
+                    };
+                } else {
+                    return {
+                        ...reg,
+                        lotteryStatus: 'لیست انتظار',
+                        reserveRank: waitingRankMap.get(reg.id) || 1,
+                        paymentStatus: alreadyPaid ? reg.paymentStatus : 'پس از قرعه‌کشی'
+                    };
+                }
+            });
+
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast(`قرعه‌کشی انجام شد! ${winnerSet.size.toLocaleString('fa-IR')} نفر منتخب اصلی و ${waitingIds.length.toLocaleString('fa-IR')} نفر در لیست انتظار نوبت‌دار قرار گرفتند.`, 'success');
+        }
+
+        function recalculateWaitingListRanks() {
+            let rank = 1;
+            const waitingItems = registrations
+                .filter(r => r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو')
+                .sort((a, b) => (a.reserveRank || 999) - (b.reserveRank || 999));
+
+            const rankMap = new Map();
+            waitingItems.forEach(item => rankMap.set(item.id, rank++));
+
+            registrations = registrations.map(r => {
+                if (r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو') {
+                    return { ...r, lotteryStatus: 'لیست انتظار', reserveRank: rankMap.get(r.id) };
+                }
+                return { ...r, reserveRank: null };
+            });
+        }
+
+        async function promoteNextFromWaitingList() {
+            const waitingItems = registrations
+                .filter(r => r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو')
+                .sort((a, b) => (a.reserveRank || 999) - (b.reserveRank || 999));
+
+            if (waitingItems.length === 0) {
+                showToast('هیچ دانشجویی در لیست انتظار وجود ندارد.', 'info');
+                return;
+            }
+
+            const nextStudent = waitingItems[0];
+            const idx = registrations.findIndex(r => r.id === nextStudent.id);
+            if (idx === -1) return;
+
+            registrations[idx].lotteryStatus = 'منتخب قرعه‌کشی';
+            registrations[idx].reserveRank = null;
+            if (registrations[idx].paymentStatus === 'پس از قرعه‌کشی') {
+                registrations[idx].paymentStatus = 'در انتظار واریز وجه';
+            }
+
+            recalculateWaitingListRanks();
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast(`«${nextStudent.fullName}» از نفر اول لیست انتظار به برگزیدگان اصلی منتقل شد و درگاه پرداخت برایش فعال گردید!`, 'success');
+        }
+
+        async function resetLotteryStatuses() {
+            registrations = registrations.map(reg => ({
+                ...reg,
+                lotteryStatus: 'در انتظار قرعه‌کشی',
+                reserveRank: null,
+                paymentStatus: (reg.paymentStatus === 'بررسی فیش' || reg.paymentStatus === 'تایید شده') ? reg.paymentStatus : 'پس از قرعه‌کشی'
+            }));
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast('وضعیت قرعه‌کشی و لیست انتظار بازنشانی شد.', 'info');
+        }
+
+        function renderAdminTable() {
+            const stuQuota = Number(campConfig.studentQuota) || 20;
+            const winners = registrations.filter(r => r.lotteryStatus === 'منتخب قرعه‌کشی');
+            const waitingList = registrations.filter(r => r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو');
+            const verifiedList = registrations.filter(r => r.paymentStatus === 'تایید شده');
+            const pendingReviewList = registrations.filter(r => r.paymentStatus === 'بررسی فیش');
+            const totalRevenue = verifiedList.length * (Number(campConfig.fee) || 100000);
+
+            const elTotalStu = document.getElementById('statTotalStudents');
+            if (elTotalStu) {
+                elTotalStu.textContent = registrations.length.toLocaleString('fa-IR');
+                document.getElementById('statLotteryWinners').textContent = `${winners.length.toLocaleString('fa-IR')} / ${stuQuota.toLocaleString('fa-IR')}`;
+                document.getElementById('statWaitingListCount').textContent = waitingList.length.toLocaleString('fa-IR');
+                document.getElementById('statTotalRevenue').textContent = `${formatPersianCurrency(totalRevenue)} تومان`;
+                document.getElementById('statReceiptsBreakdown').textContent =
+                    `${verifiedList.length.toLocaleString('fa-IR')} تایید قطعی | ${pendingReviewList.length.toLocaleString('fa-IR')} منتظر بررسی`;
+            }
+
+            const searchInput = document.getElementById('adminSearchInput');
+            const lotteryFilter = document.getElementById('adminLotteryFilter');
+            const payFilter = document.getElementById('adminPaymentFilter');
+
+            const query = searchInput ? toEnglishDigits(searchInput.value).toLowerCase() : '';
+            const lotteryVal = lotteryFilter ? lotteryFilter.value : 'ALL';
+            const payVal = payFilter ? payFilter.value : 'ALL';
+
+            const filtered = registrations.filter(r => {
+                const matchesQuery = !query ||
+                    r.fullName.toLowerCase().includes(query) ||
+                    (r.major && r.major.toLowerCase().includes(query)) ||
+                    r.studentId.toLowerCase().includes(query) ||
+                    r.nationalId.toLowerCase().includes(query) ||
+                    r.mobile.toLowerCase().includes(query) ||
+                    r.trackingCode.toLowerCase().includes(query);
+
+                if (!matchesQuery) return false;
+                if (lotteryVal !== 'ALL') {
+                    if (lotteryVal === 'لیست انتظار' && (r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو')) {
+                        // match
+                    } else if (r.lotteryStatus !== lotteryVal) {
+                        return false;
+                    }
+                }
+                if (payVal !== 'ALL' && r.paymentStatus !== payVal) return false;
+                return true;
+            });
+
+            const tbody = document.getElementById('adminTableBody');
+            const emptyState = document.getElementById('adminEmptyState');
+            if (!tbody) return;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            tbody.innerHTML = filtered.map((r, idx) => {
+                const isWaiting = r.lotteryStatus === 'لیست انتظار' || r.lotteryStatus === 'لیست رزرو';
+                let statusBadgeClass = 'bg-amber-50 text-amber-800 border-amber-200';
+                if (r.lotteryStatus === 'منتخب قرعه‌کشی') {
+                    statusBadgeClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
+                } else if (isWaiting) {
+                    statusBadgeClass = 'bg-purple-50 text-purple-800 border-purple-200';
+                }
+
+                let payBadgeClass = 'bg-slate-100 text-slate-600 border-slate-200';
+                let payIcon = 'fa-hourglass text-slate-400';
+                if (r.paymentStatus === 'تایید شده') {
+                    payBadgeClass = 'bg-emerald-50 text-emerald-800 border-emerald-300';
+                    payIcon = 'fa-circle-check text-emerald-600';
+                } else if (r.paymentStatus === 'بررسی فیش') {
+                    payBadgeClass = 'bg-amber-50 text-amber-900 border-amber-300 animate-pulse';
+                    payIcon = 'fa-file-invoice-dollar text-amber-600';
+                } else if (r.paymentStatus === 'رد شده') {
+                    payBadgeClass = 'bg-rose-50 text-rose-700 border-rose-200';
+                    payIcon = 'fa-circle-xmark text-rose-600';
+                }
+                const hasReceiptImg = Boolean(r.receiptDataUrl);
+
+                return `
+                    <tr class="hover:bg-slate-50/80 transition">
+                        <td class="py-3.5 px-4">
+                            <span class="font-bold text-slate-400 text-xs block">#${(idx + 1).toLocaleString('fa-IR')}</span>
+                            <span class="font-mono text-xs font-bold text-slate-700">${r.trackingCode}</span>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="font-extrabold text-slate-900">${r.fullName}</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">${r.createdAt}</div>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="font-bold text-emerald-700 text-xs">${r.major || 'مهندسی مکانیک'}</div>
+                            <div class="text-xs text-slate-500 mt-0.5">${r.entryYear}</div>
+                        </td>
+                        <td class="py-3.5 px-4 font-mono text-xs">
+                            <div class="font-bold text-slate-800">ش.د: ${r.studentId}</div>
+                            <div class="text-slate-500 mt-0.5">ک.م: ${r.nationalId}</div>
+                        </td>
+                        <td class="py-3.5 px-4 font-mono text-xs">
+                            <div class="font-bold text-slate-800">${r.mobile}</div>
+                            <div class="text-slate-400 mt-0.5">اضطراری: ${r.emergencyPhone}</div>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex flex-col gap-1">
+                                <select onchange="changeLotteryStatus('${r.id}', this.value)"
+                                    class="text-xs font-extrabold px-2.5 py-1.5 rounded-xl border ${statusBadgeClass} outline-none cursor-pointer">
+                                    <option value="در انتظار قرعه‌کشی" ${r.lotteryStatus === 'در انتظار قرعه‌کشی' ? 'selected' : ''}>در انتظار قرعه‌کشی</option>
+                                    <option value="منتخب قرعه‌کشی" ${r.lotteryStatus === 'منتخب قرعه‌کشی' ? 'selected' : ''}>منتخب قرعه‌کشی (۲۰ نفر)</option>
+                                    <option value="لیست انتظار" ${isWaiting ? 'selected' : ''}>لیست انتظار (ذخیره)</option>
+                                </select>
+                                ${isWaiting && r.reserveRank ? `<span class="text-[11px] font-extrabold text-purple-700 pr-1">اولویت لیست انتظار: نفر ${r.reserveRank.toLocaleString('fa-IR')}</span>` : ''}
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex flex-col gap-1.5 items-start">
+                                <span class="text-xs font-extrabold px-2.5 py-1 rounded-xl border inline-flex items-center gap-1.5 ${payBadgeClass}">
+                                    <i class="fa-solid ${payIcon}"></i>
+                                    <span>${r.paymentStatus}</span>
+                                </span>
+                                ${r.receiptRef ? `<span class="text-[10px] font-mono font-bold text-slate-600">پیگیری: ${r.receiptRef}</span>` : ''}
+                                ${hasReceiptImg ? `
+                                    <div class="flex items-center gap-2 bg-emerald-50/70 p-1.5 rounded-xl border border-emerald-200">
+                                        <img src="${r.receiptDataUrl}" alt="فیش" onclick="previewReceiptById('${r.id}')" class="w-10 h-10 object-cover rounded-lg border border-emerald-300 cursor-pointer hover:scale-105 transition" title="کلیک برای بزرگ‌نمایی فیش">
+                                        <div class="flex flex-col gap-1">
+                                            <button onclick="previewReceiptById('${r.id}')" class="text-[10px] font-extrabold bg-white hover:bg-emerald-600 text-emerald-800 hover:text-white px-2 py-0.5 rounded border border-emerald-200 transition">
+                                                <i class="fa-solid fa-expand ml-1"></i>بزرگ‌نمایی
+                                            </button>
+                                            <button onclick="downloadReceiptById('${r.id}')" class="text-[10px] font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-0.5 rounded transition">
+                                                <i class="fa-solid fa-download ml-1"></i>دانلود فیش
+                                            </button>
+                                        </div>
+                                    </div>
+                                ` : `<span class="text-[10px] text-slate-400">بدون فایل فیش</span>`}
+                                <div class="flex items-center gap-1">
+                                    ${r.lotteryStatus === 'منتخب قرعه‌کشی' ? `
+                                        <button onclick="setPaymentVerification('${r.id}', 'تایید شده')" class="text-[11px] font-extrabold bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white px-2 py-0.5 rounded-lg transition" title="تایید واریز">
+                                            تایید واریز
+                                        </button>
+                                        <button onclick="setPaymentVerification('${r.id}', 'رد شده')" class="text-[11px] font-extrabold bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white px-2 py-0.5 rounded-lg transition" title="رد فیش">
+                                            رد فیش
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-center">
+                            <div class="flex items-center justify-center gap-1.5">
+                                <button onclick="openParticipantDetailModal('${r.id}')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition" title="پرونده و فیش">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                                <button onclick="deleteParticipant('${r.id}')" class="w-8 h-8 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 flex items-center justify-center transition" title="حذف رکورد">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function changeLotteryStatus(id, newStatus) {
+            const idx = registrations.findIndex(r => r.id === id);
+            if (idx === -1) return;
+            registrations[idx].lotteryStatus = newStatus;
+            const hasPaid = registrations[idx].paymentStatus === 'بررسی فیش' || registrations[idx].paymentStatus === 'تایید شده';
+
+            if (newStatus === 'منتخب قرعه‌کشی' && !hasPaid) {
+                registrations[idx].paymentStatus = 'در انتظار واریز وجه';
+                registrations[idx].reserveRank = null;
+            } else if (newStatus === 'لیست انتظار') {
+                if (!hasPaid) registrations[idx].paymentStatus = 'پس از قرعه‌کشی';
+                registrations[idx].reserveRank = 999;
+            } else if (!hasPaid) {
+                registrations[idx].paymentStatus = 'پس از قرعه‌کشی';
+                registrations[idx].reserveRank = null;
+            }
+
+            recalculateWaitingListRanks();
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast(`وضعیت قرعه‌کشی «${registrations[idx].fullName}» به «${newStatus}» تغییر یافت.`, 'info');
+        }
+
+        async function setPaymentVerification(id, newPayStatus) {
+            const idx = registrations.findIndex(r => r.id === id);
+            if (idx === -1) return;
+            registrations[idx].paymentStatus = newPayStatus;
+            registrations[idx].paidAmount = newPayStatus === 'تایید شده' ? 100000 : 0;
+
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast(`وضعیت پرداخت «${registrations[idx].fullName}» به «${newPayStatus}» تغییر یافت.`, newPayStatus === 'تایید شده' ? 'success' : 'info');
+        }
+
+        async function deleteParticipant(id) {
+            const target = registrations.find(r => r.id === id);
+            if (!target) return;
+            registrations = registrations.filter(r => r.id !== id);
+            recalculateWaitingListRanks();
+            localStorage.setItem(STORAGE_KEY_REGS, JSON.stringify(registrations));
+            await pushToCloud('SYNC_ALL', null);
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            showToast(`رکورد «${target.fullName}» حذف شد.`, 'info');
+        }
+
+        function exportToExcelCSV(onlyWinners = false) {
+            const list = onlyWinners
+                ? registrations.filter(r => r.lotteryStatus === 'منتخب قرعه‌کشی')
+                : registrations;
+
+            if (list.length === 0) {
+                showToast('هیچ رکوردی برای خروجی اکسل یافت نشد.', 'error');
+                return;
+            }
+
+            const headers = [
+                'ردیف',
+                'کد رهگیری',
+                'نام و نام خانوادگی',
+                'رشته تحصیلی',
+                'مقطع و ورودی',
+                'شماره دانشجویی',
+                'کد ملی',
+                'شماره موبایل',
+                'تلفن اضطراری',
+                'وضعیت قرعه‌کشی',
+                'اولویت لیست انتظار',
+                'وضعیت فیش ۱۰۰ هزار تومانی',
+                'کد پیگیری بانکی',
+                'تاریخ ثبت‌نام'
+            ];
+
+            const rows = list.map((r, i) => [
+                i + 1,
+                r.trackingCode,
+                r.fullName,
+                r.major || 'مهندسی مکانیک',
+                r.entryYear,
+                r.studentId,
+                r.nationalId,
+                r.mobile,
+                r.emergencyPhone,
+                r.lotteryStatus,
+                r.reserveRank || '-',
+                r.paymentStatus,
+                r.receiptRef || '-',
+                r.createdAt
+            ]);
+
+            const csvContent = '\uFEFF' + [headers, ...rows]
+                .map(row => row.map(cell => `"${String(cell || '').replace(/"/g, '""')}"`).join(','))
+                .join('\r\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = onlyWinners ? 'لیست_منتخبین_اردوی_ماشین_سازی_اراک.csv' : 'کل_لیست_و_ذخیره_اردوی_ماشین_سازی_اراک.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showToast('فایل اکسل (CSV) با موفقیت دانلود شد.', 'success');
+        }
+
+        function copyTextToClipboard(text, successMsg) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast(successMsg, 'info');
+        }
+
+        function copyBankCard() {
+            const rawCard = campConfig.bankCard.replace(/[^0-9]/g, '');
+            copyTextToClipboard(rawCard, 'شماره کارت پایگاه پیشران کپی شد.');
+        }
+
+        function copyTrackingCode() {
+            const code = document.getElementById('ticketTrackingCode').textContent.trim();
+            copyTextToClipboard(code, `کد رهگیری ${code} کپی شد.`);
+        }
+
+        function openTermsModal() {
+            const m = document.getElementById('termsModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+        function closeTermsModal() {
+            const m = document.getElementById('termsModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+        function acceptTermsFromModal() {
+            document.getElementById('sbuMechCheck').checked = true;
+            document.getElementById('termsCheck').checked = true;
+            hideError('terms');
+            closeTermsModal();
+            showToast('قوانین و شرایط اردو تایید شد.', 'success');
+        }
+
+        function openScheduleModal() {
+            const m = document.getElementById('scheduleModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+        function closeScheduleModal() {
+            const m = document.getElementById('scheduleModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function openCampSettingsModal() {
+            document.getElementById('editBankCard').value = campConfig.bankCard;
+            document.getElementById('editStudentQuota').value = campConfig.studentQuota;
+            document.getElementById('editAdminPassword').value = campConfig.adminPassword;
+            document.getElementById('editCloudUrl').value = campConfig.cloudUrl || '';
+
+            const m = document.getElementById('campSettingsModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+        function closeCampSettingsModal() {
+            const m = document.getElementById('campSettingsModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        async function saveCampSettings(e) {
+            e.preventDefault();
+            campConfig.bankCard = document.getElementById('editBankCard').value.trim();
+            campConfig.studentQuota = Number(document.getElementById('editStudentQuota').value) || 20;
+            campConfig.adminPassword = document.getElementById('editAdminPassword').value.trim() || 'pishran1405';
+            campConfig.cloudUrl = document.getElementById('editCloudUrl').value.trim();
+
+            localStorage.setItem(STORAGE_KEY_CONFIG, JSON.stringify(campConfig));
+            updateHeroAndCapacityStats();
+            renderAdminTable();
+            closeCampSettingsModal();
+            showToast('تنظیمات اردو، رمز عبور و لینک دیتابیس ذخیره شد.', 'success');
+
+            if (campConfig.cloudUrl) {
+                await syncFromCloud(true);
+            }
+        }
+
+        function openParticipantDetailModal(id) {
+            const r = registrations.find(item => item.id === id);
+            if (!r) return;
+
+            const receiptPreviewHtml = r.receiptDataUrl
+                ? `<div class="mt-3 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-3">
+                       <div class="flex items-center justify-between text-xs font-bold text-emerald-900">
+                           <span>تصویر فیش ارسالی دانشجو:</span>
+                           <span class="font-mono">${r.receiptRef ? 'کد پیگیری: ' + r.receiptRef : ''}</span>
+                       </div>
+                       <img src="${r.receiptDataUrl}" alt="تصویر فیش" onclick="previewReceiptById('${r.id}')" class="max-h-64 mx-auto rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:opacity-95 transition">
+                       <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+                           <button onclick="downloadReceiptById('${r.id}')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-extrabold transition">
+                               <i class="fa-solid fa-download ml-1"></i>دانلود فایل عکس فیش
+                           </button>
+                           <button onclick="setPaymentVerification('${r.id}', 'تایید شده'); closeParticipantDetailModal();" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition">
+                               <i class="fa-solid fa-check ml-1"></i>تایید نهایی این فیش
+                           </button>
+                           <button onclick="setPaymentVerification('${r.id}', 'رد شده'); closeParticipantDetailModal();" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-extrabold transition">
+                               <i class="fa-solid fa-xmark ml-1"></i>رد فیش (درخواست اصلاح)
+                           </button>
+                       </div>
+                   </div>`
+                : `<div class="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center text-xs text-slate-500">
+                       هنوز تصویر فیشی توسط این دانشجو بارگذاری نشده است (وضعیت فعلی: <strong>${r.paymentStatus}</strong>).
+                   </div>`;
+
+            const body = document.getElementById('participantDetailBody');
+            body.innerHTML = `
+                <div class="grid grid-cols-2 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs">
+                    <div><span class="text-slate-400 block">نام و نام خانوادگی:</span><strong class="text-slate-900 text-sm">${r.fullName}</strong></div>
+                    <div><span class="text-slate-400 block">کد رهگیری:</span><strong class="font-mono text-emerald-700 text-sm">${r.trackingCode}</strong></div>
+                    <div><span class="text-slate-400 block">شماره دانشجویی:</span><strong class="font-mono text-slate-800">${r.studentId}</strong></div>
+                    <div><span class="text-slate-400 block">کد ملی:</span><strong class="font-mono text-slate-800">${r.nationalId}</strong></div>
+                    <div><span class="text-slate-400 block">رشته تحصیلی:</span><strong class="text-emerald-800">${r.major || 'مهندسی مکانیک'}</strong></div>
+                    <div><span class="text-slate-400 block">مقطع و ورودی:</span><strong class="text-slate-800">${r.entryYear}</strong></div>
+                    <div><span class="text-slate-400 block">شماره موبایل:</span><strong class="font-mono text-slate-800">${r.mobile}</strong></div>
+                    <div><span class="text-slate-400 block">تماس اضطراری:</span><strong class="font-mono text-slate-800">${r.emergencyPhone}</strong></div>
+                    <div><span class="text-slate-400 block">وضعیت قرعه‌کشی:</span><strong class="text-emerald-700">${r.lotteryStatus} ${r.reserveRank ? '(نوبت ' + r.reserveRank + ')' : ''}</strong></div>
+                    <div><span class="text-slate-400 block">وضعیت واریز:</span><strong class="text-slate-900">${r.paymentStatus}</strong></div>
+                </div>
+                ${receiptPreviewHtml}
+            `;
+
+            const viewBtn = document.getElementById('modalViewTicketBtn');
+            viewBtn.onclick = function() {
+                closeParticipantDetailModal();
+                switchTab('track');
+                document.getElementById('trackQueryInput').value = r.studentId;
+                populateDigitalTicket(r);
+                document.getElementById('digitalTicketSection').classList.remove('hidden');
+            };
+
+            const m = document.getElementById('participantDetailModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeParticipantDetailModal() {
+            const m = document.getElementById('participantDetailModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function openDeployGuideModal() {
+            const m = document.getElementById('deployGuideModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeDeployGuideModal() {
+            const m = document.getElementById('deployGuideModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function copyGoogleAppsScriptCode() {
+            const code = document.getElementById('gasCodeBlock').textContent;
+            copyTextToClipboard(code, 'کد Google Apps Script با موفقیت کپی شد.');
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
